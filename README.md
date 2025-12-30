@@ -4,7 +4,7 @@ COBRAdb loads genome-scale metabolic models and genome annotations into a
 relational database. It powers [BiGGr Models](https://biggr.org), and
 it is available under the MIT license. The bin/load_db script is the entrypoint
 for building a database. The cobradb python library is also used by the
-[biggr_models](https://github.org/biosustain/biggr_models) python package.
+[biggr_models](https://github.com/biosustain/biggr_models) python package.
 
 ## Installation
 
@@ -28,7 +28,7 @@ It is recommended to run the program using Docker compose.
 
 5. Populate these directories with the required datafiles:
    `/data/biggr-chebi-cache` can be left empty. For `/data/biggr-assemblies` and
-   `/data/biggr-input-models`, see the [biggr_models_data](https://github.org/biosustain/biggr_models_data) documentation. `/data/biggr-datafiles` files are
+   `/data/biggr-input-models`, see the [biggr_models_data](https://github.com/biosustain/biggr_models_data) documentation. `/data/biggr-datafiles` files are
    available internally on the `biggr` storage account.
 
 6. Build the docker container using `docker compose build` and run using `docker compose up`.
