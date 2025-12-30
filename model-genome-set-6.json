@@ -1,0 +1,1519 @@
+{
+  "models": [
+    {
+      "filename": "iJO1366.xml",
+      "pub_ref": "pmid:21988831",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iAF1260.xml",
+      "pub_ref": "pmid:17593909",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iY75_1357.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000010245.2",
+      "chromosomes": ["NC_007779.1"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iML1515.json",
+      "pub_ref": "pmid:29020004",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iCN718.json",
+      "pub_ref": "pmid:29692801",
+      "assembly": "GCF_000069245.1",
+      "chromosomes": ["NC_010410.1"]
+    },
+    {
+      "filename": "iEC1368_DH5a.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_000982435.1",
+      "chromosomes": ["NZ_JRYM01000089.1"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iEC1344_C.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_002079225.1",
+      "chromosomes": ["NZ_CP020543.1"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iEC1356_Bl21DE3.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_000022665.1",
+      "chromosomes": ["NC_012971.2"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iEC1349_Crooks.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_000019385.1",
+      "chromosomes": ["NC_010468.1"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iEC1364_W.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_000184185.1",
+      "chromosomes": ["NC_017635.1"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iEC1372_W3110.json",
+      "pub_ref": "pmid:27667363",
+      "assembly": "GCF_000010245.2",
+      "chromosomes": ["NC_007779.1"],
+      "collection": "iECx6"
+    },
+    {
+      "filename": "iSB619.xml",
+      "pub_ref": "pmid:15752426",
+      "assembly": "GCF_000009645.1",
+      "chromosomes": ["NC_002745.2"]
+    },
+    {
+      "filename": "iJR904.xml",
+      "pub_ref": "pmid:12952533",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iAF987.xml",
+      "pub_ref": "pmid:24762737",
+      "assembly": "GCF_000012925.1",
+      "chromosomes": "NC_007517.1",
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iMM904.xml",
+      "pub_ref": "pmid:19321003",
+      "assembly": "GCF_000146045.2",
+      "chromosomes": [
+        "NC_001133.9",
+        "NC_001134.8",
+        "NC_001135.5",
+        "NC_001136.10",
+        "NC_001137.3",
+        "NC_001138.5",
+        "NC_001139.9",
+        "NC_001140.6",
+        "NC_001141.2",
+        "NC_001142.9",
+        "NC_001143.9",
+        "NC_001144.5",
+        "NC_001145.3",
+        "NC_001146.8",
+        "NC_001147.6",
+        "NC_001148.4",
+        "NC_001224.1"
+      ]
+    },
+    {
+      "filename": "iAPECO1_1312.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000014845.1",
+      "chromosomes": ["NC_008563.1"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iND750.xml",
+      "pub_ref": "pmid:15197165",
+      "assembly": "GCF_000146045.2",
+      "chromosomes": [
+        "NC_001133.9",
+        "NC_001134.8",
+        "NC_001135.5",
+        "NC_001136.10",
+        "NC_001137.3",
+        "NC_001138.5",
+        "NC_001139.9",
+        "NC_001140.6",
+        "NC_001141.2",
+        "NC_001142.9",
+        "NC_001143.9",
+        "NC_001144.5",
+        "NC_001145.3",
+        "NC_001146.8",
+        "NC_001147.6",
+        "NC_001148.4",
+        "NC_001224.1"
+      ],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iPC815.xml",
+      "pub_ref": "pmid:21995956",
+      "assembly": "GCF_000009065.1",
+      "chromosomes": ["NC_003143.1"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iSF_1195.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000006925.2",
+      "chromosomes": ["NC_004337.2"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iJN746.xml",
+      "pub_ref": "pmid:18793442",
+      "assembly": "GCF_000007565.1",
+      "chromosomes": ["NC_002947.3"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iIT341.xml",
+      "pub_ref": "pmid:16077130",
+      "assembly": "GCF_000008525.1",
+      "chromosomes": ["NC_000915.1"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iNJ661.xml",
+      "pub_ref": "pmid:17555602",
+      "assembly": "GCF_000195955.2",
+      "chromosomes": ["NC_000962.3"],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iBWG_1329.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000022345.1",
+      "chromosomes": ["NC_012759.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iB21_1397.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000009565.1",
+      "chromosomes": ["NC_012892.2"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "ic_1306.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000007445.1",
+      "chromosomes": ["NC_004431.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iE2348C_1286.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026545.1",
+      "chromosomes": ["NC_011601.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEC042_1314.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000027125.1",
+      "chromosomes": ["NC_017626.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEC55989_1330.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026245.1",
+      "chromosomes": ["NC_011748.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECABU_c1320.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000148365.1",
+      "chromosomes": ["NC_017631.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECB_1328.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000017985.1",
+      "chromosomes": ["NC_012967.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECBD_1354.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000023665.1",
+      "chromosomes": ["NC_012947.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECD_1391.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000022665.1",
+      "chromosomes": ["NC_012971.2"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEcDH1_1363.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000023365.1",
+      "chromosomes": ["NC_017625.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECDH1ME8569_1439.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000270105.1",
+      "chromosomes": ["NC_017638.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECDH10B_1368.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000019425.1",
+      "chromosomes": ["NC_010473.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEcE24377_1341.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000017745.1",
+      "chromosomes": ["NC_009801.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECED1_1282.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026305.1",
+      "chromosomes": ["NC_011745.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECH74115_1262.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000021125.1",
+      "chromosomes": ["NC_011353.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEcHS_1320.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000017765.1",
+      "chromosomes": ["NC_009800.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECIAI1_1343.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026265.1",
+      "chromosomes": ["NC_011741.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECIAI39_1322.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026345.1",
+      "chromosomes": ["NC_011750.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECNA114_1301.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000214765.1",
+      "organism": "Escherichia coli NA114",
+      "tax_id": 1033813,
+      "chromosomes": ["CP002797.2"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECO103_1326.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000010745.1",
+      "chromosomes": ["NC_013353.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECO111_1330.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000010765.1",
+      "chromosomes": ["NC_013364.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECO26_1355.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000091005.1",
+      "chromosomes": ["NC_013361.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECOK1_1307.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000025745.1",
+      "chromosomes": ["NC_017628.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEcolC_1368.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000019385.1",
+      "chromosomes": ["NC_010468.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECP_1309.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000013305.1",
+      "chromosomes": ["NC_008253.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECS88_1305.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026285.1",
+      "chromosomes": ["NC_011742.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECs_1301.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000008865.1",
+      "chromosomes": ["BA000007.2"],
+      "organism": "Escherichia coli O157:H7 str. Sakai",
+      "tax_id": 386585,
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECSE_1348.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000010385.1",
+      "chromosomes": ["NC_011415.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECSF_1327.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000010485.1",
+      "chromosomes": ["NC_013654.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEcSMS35_1347.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000019645.1",
+      "chromosomes": ["NC_010498.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECSP_1301.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000022225.1",
+      "chromosomes": ["NC_013008.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECUMN_1333.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000026325.1",
+      "chromosomes": ["NC_011751.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iECW_1372.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000184185.1",
+      "chromosomes": ["NC_017635.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iEKO11_1354.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "CP002516.1",
+      "chromosomes": ["CP002516.1"],
+      "organism": "Escherichia coli KO11",
+      "tax_id": 595495,
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iETEC_1333.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000210475.1",
+      "chromosomes": ["NC_017633.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iG2583_1286.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000025165.1",
+      "chromosomes": ["NC_013941.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iLF82_1304.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000284495.1",
+      "chromosomes": ["NC_011993.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iNRG857_1313.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000183345.1",
+      "chromosomes": ["NC_017634.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iS_1188.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000007405.1",
+      "chromosomes": ["NC_004741.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSbBS512_1146.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000020185.1",
+      "chromosomes": ["NC_010658.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSBO_1134.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000012025.1",
+      "chromosomes": ["NC_007613.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSDY_1059.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000012005.1",
+      "chromosomes": ["NC_007606.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSFV_1184.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000013585.1",
+      "chromosomes": ["NC_008258.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSFxv_1172.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000022245.1",
+      "chromosomes": ["NC_017328.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iSSON_1240.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000092525.1",
+      "chromosomes": ["NC_007384.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iUMN146_1321.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000148605.1",
+      "chromosomes": ["NC_017632.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iUMNK88_1353.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000212715.1",
+      "chromosomes": ["NC_017641.1"],
+      "organism": "Escherichia coli UMNK88",
+      "tax_id": 696406,
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iUTI89_1310.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000013265.1",
+      "chromosomes": ["NC_007946.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iWFL_1372.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000184185.1",
+      "chromosomes": ["NC_017635.1"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "iZ_1308.xml",
+      "pub_ref": "pmid:24277855",
+      "assembly": "GCF_000006665.1",
+      "chromosomes": ["NC_002655.2"],
+      "cobra_env": "cobra_0.14.2",
+      "collection": "iECx55"
+    },
+    {
+      "filename": "ecoli_core_model.xml",
+      "pub_ref": "doi:10.1128/ecosalplus.10.2.1",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iYL1228.xml",
+      "pub_ref": "pmid:21296962",
+      "assembly": "GCF_000016305.1",
+      "chromosomes": ["NC_009648.1"]
+    },
+    {
+      "filename": "STM_v1.0.xml",
+      "pub_ref": "pmid:21244678",
+      "assembly": "GCF_000006945.1",
+      "chromosomes": ["AE006468.1"],
+      "organism": "Salmonella enterica subsp. enterica serovar Typhimurium str. LT2",
+      "tax_id": 99287
+    },
+    {
+      "filename": "iJN678.xml",
+      "pub_ref": "pmid:22308420",
+      "assembly": "GCF_000009725.1",
+      "chromosomes": ["NC_000911.1"]
+    },
+    {
+      "filename": "iAF692.xml",
+      "pub_ref": "pmid:16738551",
+      "assembly": "iAF692_suppressed",
+      "chromosomes": ["CP000099.1"],
+      "organism": "Methanosarcina barkeri str. Fusaro",
+      "tax_id": 269797,
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iYO844.xml",
+      "pub_ref": "pmid:17573341",
+      "assembly": "GCF_000009045.1",
+      "chromosomes": ["NC_000964.3"]
+    },
+    {
+      "filename": "RECON1.xml",
+      "pub_ref": "pmid:17267599",
+      "assembly": "GCF_000001405.33",
+      "chromosomes": [
+        "NC_000001.11",
+        "NC_000002.12",
+        "NC_000003.12",
+        "NC_000004.12",
+        "NC_000005.10",
+        "NC_000006.12",
+        "NC_000007.14",
+        "NC_000008.11",
+        "NC_000009.12",
+        "NC_000010.11",
+        "NC_000011.10",
+        "NC_000012.12",
+        "NC_000013.11",
+        "NC_000014.9",
+        "NC_000015.10",
+        "NC_000016.10",
+        "NC_000017.11",
+        "NC_000018.10",
+        "NC_000019.10",
+        "NC_000020.11",
+        "NC_000021.9",
+        "NC_000022.11",
+        "NC_000023.11",
+        "NC_000024.10",
+        "NC_012920.1"
+      ]
+    },
+    {
+      "filename": "iAT_PLT_636.xml",
+      "pub_ref": "pmid:24473230",
+      "assembly": "GCF_000001405.33",
+      "chromosomes": [
+        "NC_000001.11",
+        "NC_000002.12",
+        "NC_000003.12",
+        "NC_000004.12",
+        "NC_000005.10",
+        "NC_000006.12",
+        "NC_000007.14",
+        "NC_000008.11",
+        "NC_000009.12",
+        "NC_000010.11",
+        "NC_000011.10",
+        "NC_000012.12",
+        "NC_000013.11",
+        "NC_000014.9",
+        "NC_000015.10",
+        "NC_000016.10",
+        "NC_000017.11",
+        "NC_000018.10",
+        "NC_000019.10",
+        "NC_000020.11",
+        "NC_000021.9",
+        "NC_000022.11",
+        "NC_000023.11",
+        "NC_000024.10",
+        "NC_012920.1"
+      ],
+      "cobra_env": "cobra_0.14.2"
+    },
+    {
+      "filename": "iAB_RBC_283.xml",
+      "pub_ref": "pmid:21749716",
+      "assembly": "GCF_000001405.33",
+      "chromosomes": [
+        "NC_000001.11",
+        "NC_000002.12",
+        "NC_000003.12",
+        "NC_000004.12",
+        "NC_000005.10",
+        "NC_000006.12",
+        "NC_000007.14",
+        "NC_000008.11",
+        "NC_000009.12",
+        "NC_000010.11",
+        "NC_000011.10",
+        "NC_000012.12",
+        "NC_000013.11",
+        "NC_000014.9",
+        "NC_000015.10",
+        "NC_000016.10",
+        "NC_000017.11",
+        "NC_000018.10",
+        "NC_000019.10",
+        "NC_000020.11",
+        "NC_000021.9",
+        "NC_000022.11",
+        "NC_000023.11",
+        "NC_000024.10",
+        "NC_012920.1"
+      ]
+    },
+    {
+      "filename": "iAF1260b.xml",
+      "pub_ref": "pmid:19840862",
+      "assembly": "GCF_000005845.2",
+      "chromosomes": ["NC_000913.3"]
+    },
+    {
+      "filename": "iNF517.xml",
+      "pub_ref": "pmid:23974365",
+      "assembly": "GCF_000009425.1",
+      "chromosomes": ["NC_009004.1"]
+    },
+    {
+      "filename": "iJB785.json",
+      "pub_ref": "pmid:27911809",
+      "assembly": "GCF_000012525.1",
+      "chromosomes": ["NC_007604.1", "NC_007595.1"]
+    },
+    {
+      "filename": "iLB1027_lipid.json",
+      "pub_ref": "pmid:27152931",
+      "assembly": "GCF_000150965.2,GCF_000150955.2",
+      "chromosomes": [
+        "NC_011669.1",
+        "NC_011670.1",
+        "NC_011671.1",
+        "NC_011672.1",
+        "NC_011673.1",
+        "NC_011674.1",
+        "NC_011675.1",
+        "NC_011676.1",
+        "NC_011677.1",
+        "NC_011678.1",
+        "NC_011679.1",
+        "NC_011680.1",
+        "NC_011681.1",
+        "NC_011682.1",
+        "NC_011683.1",
+        "NC_011684.1",
+        "NC_011685.1",
+        "NC_011686.1",
+        "NC_011687.1",
+        "NC_011688.1",
+        "NC_011689.1",
+        "NC_011690.1",
+        "NC_011691.1",
+        "NC_011692.1",
+        "NC_011693.1",
+        "NC_011694.1",
+        "NC_011695.1",
+        "NC_011696.1",
+        "NC_011697.1",
+        "NC_011698.1",
+        "NC_011699.1",
+        "NC_011700.1",
+        "NC_011701.1"
+      ]
+    },
+    {
+      "filename": "iEK1008.json",
+      "pub_ref": "pmid:29499714",
+      "assembly": "GCF_000195955.2",
+      "chromosomes": ["NC_000962.3"]
+    },
+    {
+      "filename": "iSynCJ816.xml",
+      "pub_ref": "doi:10.1016/j.algal.2017.09.013",
+      "assembly": "GCF_000009725.1",
+      "chromosomes": ["NC_000911.1"]
+    },
+    {
+      "filename": "iAM_Pf480.xml",
+      "pub_ref": "pmid:29300748",
+      "assembly": "GCF_000002765.4",
+      "chromosomes": [
+        "NC_004325.2",
+        "NC_037280.1",
+        "NC_000521.4",
+        "NC_004318.2",
+        "NC_004326.2",
+        "NC_004327.3",
+        "NC_004328.3",
+        "NC_004329.3",
+        "NC_004330.2",
+        "NC_037281.1",
+        "NC_037282.1",
+        "NC_037284.1",
+        "NC_004331.3",
+        "NC_037283.1",
+        "NC_036769.1"
+      ],
+      "collection": "iAM_Px5"
+    },
+    {
+      "filename": "iAM_Pv461.xml",
+      "pub_ref": "pmid:29300748",
+      "assembly": "GCF_000002415.2",
+      "chromosomes": [
+        "NC_009906.1",
+        "NC_009907.1",
+        "NC_009908.2",
+        "NC_009909.1",
+        "NC_009910.1",
+        "NC_009911.1",
+        "NC_009912.1",
+        "NC_009913.1",
+        "NC_009914.1",
+        "NC_009915.1",
+        "NC_009916.1",
+        "NC_009917.1",
+        "NC_009918.1",
+        "NC_009919.1",
+        "NC_007243.1"
+      ],
+      "collection": "iAM_Px5"
+    },
+    {
+      "filename": "iAM_Pb448.xml",
+      "pub_ref": "pmid:29300748",
+      "assembly": "GCF_900002375.1",
+      "chromosomes": [
+        "NC_036159.1",
+        "NC_036160.1",
+        "NC_036161.1",
+        "NC_036162.1",
+        "NC_036163.1",
+        "NC_036164.1",
+        "NC_036165.1",
+        "NC_036166.1",
+        "NC_036167.1",
+        "NC_036168.1",
+        "NC_036169.1",
+        "NC_036170.1",
+        "NC_036171.1",
+        "NC_036172.1",
+        "NC_015303.1",
+        "NC_030892.1"
+      ],
+      "collection": "iAM_Px5"
+    },
+    {
+      "filename": "iAM_Pc455.xml",
+      "pub_ref": "pmid:29300748",
+      "assembly": "GCF_000321355.1",
+      "chromosomes": [
+        "NC_020396.1",
+        "NC_020395.1",
+        "NC_020397.1",
+        "NC_020408.1",
+        "NC_020398.1",
+        "NC_020399.1",
+        "NC_020400.1",
+        "NC_020401.1",
+        "NC_020402.1",
+        "NC_020403.1",
+        "NC_020404.1",
+        "NC_020405.1",
+        "NC_020406.1",
+        "NC_020407.1"
+      ],
+      "collection": "iAM_Px5"
+    },
+    {
+      "filename": "iAM_Pk459.xml",
+      "pub_ref": "pmid:29300748",
+      "assembly": "GCF_000006355.1",
+      "chromosomes": [
+        "NC_011902.1",
+        "NC_011903.1",
+        "NC_011904.1",
+        "NC_011905.1",
+        "NC_011906.1",
+        "NC_011907.1",
+        "NC_011908.1",
+        "NC_011909.1",
+        "NC_011910.1",
+        "NC_011911.1",
+        "NC_011912.1",
+        "NC_011913.1",
+        "NC_011914.1",
+        "NC_011915.1"
+      ],
+      "collection": "iAM_Px5"
+    },
+    {
+      "filename": "iCN900.json",
+      "pub_ref": "doi:10.1038/s41540-020-00151-9",
+      "assembly": "GCF_000009205.2",
+      "chromosomes": ["NC_009089.1"]
+    },
+    {
+      "filename": "iJN1462.json",
+      "pub_ref": "pmid:31657101",
+      "assembly": "GCF_000007565.2",
+      "chromosomes": ["NC_002947.4"]
+    },
+    {
+      "filename": "GCF_902652195.1.xml",
+      "assembly": "pankb_assembly:GCF_902652195.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693575.1.xml",
+      "assembly": "pankb_assembly:GCF_022693575.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009876425.1.xml",
+      "assembly": "pankb_assembly:GCF_009876425.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709335.1.xml",
+      "assembly": "pankb_assembly:GCF_020709335.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964252575.1.xml",
+      "assembly": "pankb_assembly:GCF_964252575.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964239715.1.xml",
+      "assembly": "pankb_assembly:GCF_964239715.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964252455.1.xml",
+      "assembly": "pankb_assembly:GCF_964252455.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964243945.1.xml",
+      "assembly": "pankb_assembly:GCF_964243945.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964249795.1.xml",
+      "assembly": "pankb_assembly:GCF_964249795.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874145.1.xml",
+      "assembly": "pankb_assembly:GCF_009874145.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_003149285.1.xml",
+      "assembly": "pankb_assembly:GCF_003149285.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964245125.1.xml",
+      "assembly": "pankb_assembly:GCF_964245125.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009696405.1.xml",
+      "assembly": "pankb_assembly:GCF_009696405.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964251295.1.xml",
+      "assembly": "pankb_assembly:GCF_964251295.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_027695885.1.xml",
+      "assembly": "pankb_assembly:GCF_027695885.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_002814255.1.xml",
+      "assembly": "pankb_assembly:GCF_002814255.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_003459885.1.xml",
+      "assembly": "pankb_assembly:GCF_003459885.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874205.1.xml",
+      "assembly": "pankb_assembly:GCF_009874205.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964246375.1.xml",
+      "assembly": "pankb_assembly:GCF_964246375.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964240785.1.xml",
+      "assembly": "pankb_assembly:GCF_964240785.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709315.1.xml",
+      "assembly": "pankb_assembly:GCF_020709315.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693475.1.xml",
+      "assembly": "pankb_assembly:GCF_022693475.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964239495.1.xml",
+      "assembly": "pankb_assembly:GCF_964239495.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709235.1.xml",
+      "assembly": "pankb_assembly:GCF_020709235.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_900116735.1.xml",
+      "assembly": "pankb_assembly:GCF_900116735.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964252475.1.xml",
+      "assembly": "pankb_assembly:GCF_964252475.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964243965.1.xml",
+      "assembly": "pankb_assembly:GCF_964243965.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_019130895.1.xml",
+      "assembly": "pankb_assembly:GCF_019130895.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_002221705.2.xml",
+      "assembly": "pankb_assembly:GCF_002221705.2",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964242455.1.xml",
+      "assembly": "pankb_assembly:GCF_964242455.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_041226065.1.xml",
+      "assembly": "pankb_assembly:GCF_041226065.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964248735.1.xml",
+      "assembly": "pankb_assembly:GCF_964248735.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964246095.1.xml",
+      "assembly": "pankb_assembly:GCF_964246095.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709275.1.xml",
+      "assembly": "pankb_assembly:GCF_020709275.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_019125695.1.xml",
+      "assembly": "pankb_assembly:GCF_019125695.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693435.1.xml",
+      "assembly": "pankb_assembly:GCF_022693435.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964251955.1.xml",
+      "assembly": "pankb_assembly:GCF_964251955.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964246075.1.xml",
+      "assembly": "pankb_assembly:GCF_964246075.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009876375.1.xml",
+      "assembly": "pankb_assembly:GCF_009876375.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_051064475.1.xml",
+      "assembly": "pankb_assembly:GCF_051064475.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709465.1.xml",
+      "assembly": "pankb_assembly:GCF_020709465.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_042849295.1.xml",
+      "assembly": "pankb_assembly:GCF_042849295.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964242285.1.xml",
+      "assembly": "pankb_assembly:GCF_964242285.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964250425.1.xml",
+      "assembly": "pankb_assembly:GCF_964250425.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022845735.1.xml",
+      "assembly": "pankb_assembly:GCF_022845735.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_039832195.1.xml",
+      "assembly": "pankb_assembly:GCF_039832195.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_900114575.1.xml",
+      "assembly": "pankb_assembly:GCF_900114575.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_040093915.1.xml",
+      "assembly": "pankb_assembly:GCF_040093915.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964250005.1.xml",
+      "assembly": "pankb_assembly:GCF_964250005.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_012271835.1.xml",
+      "assembly": "pankb_assembly:GCF_012271835.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874155.1.xml",
+      "assembly": "pankb_assembly:GCF_009874155.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874195.1.xml",
+      "assembly": "pankb_assembly:GCF_009874195.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964251365.1.xml",
+      "assembly": "pankb_assembly:GCF_964251365.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964251825.1.xml",
+      "assembly": "pankb_assembly:GCF_964251825.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_015550705.1.xml",
+      "assembly": "pankb_assembly:GCF_015550705.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_902166105.1.xml",
+      "assembly": "pankb_assembly:GCF_902166105.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693485.1.xml",
+      "assembly": "pankb_assembly:GCF_022693485.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_903181455.1.xml",
+      "assembly": "pankb_assembly:GCF_903181455.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693565.1.xml",
+      "assembly": "pankb_assembly:GCF_022693565.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964249425.1.xml",
+      "assembly": "pankb_assembly:GCF_964249425.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693625.1.xml",
+      "assembly": "pankb_assembly:GCF_022693625.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964248195.1.xml",
+      "assembly": "pankb_assembly:GCF_964248195.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_051065075.1.xml",
+      "assembly": "pankb_assembly:GCF_051065075.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964240515.1.xml",
+      "assembly": "pankb_assembly:GCF_964240515.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709535.1.xml",
+      "assembly": "pankb_assembly:GCF_020709535.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693545.1.xml",
+      "assembly": "pankb_assembly:GCF_022693545.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009876415.1.xml",
+      "assembly": "pankb_assembly:GCF_009876415.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_902374605.1.xml",
+      "assembly": "pankb_assembly:GCF_902374605.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964249895.1.xml",
+      "assembly": "pankb_assembly:GCF_964249895.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_018458805.1.xml",
+      "assembly": "pankb_assembly:GCF_018458805.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964247825.1.xml",
+      "assembly": "pankb_assembly:GCF_964247825.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874055.1.xml",
+      "assembly": "pankb_assembly:GCF_009874055.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_012317185.1.xml",
+      "assembly": "pankb_assembly:GCF_012317185.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874095.1.xml",
+      "assembly": "pankb_assembly:GCF_009874095.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_027691005.1.xml",
+      "assembly": "pankb_assembly:GCF_027691005.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_023008265.1.xml",
+      "assembly": "pankb_assembly:GCF_023008265.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964249565.1.xml",
+      "assembly": "pankb_assembly:GCF_964249565.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709455.1.xml",
+      "assembly": "pankb_assembly:GCF_020709455.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709385.1.xml",
+      "assembly": "pankb_assembly:GCF_020709385.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009876385.1.xml",
+      "assembly": "pankb_assembly:GCF_009876385.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009876345.1.xml",
+      "assembly": "pankb_assembly:GCF_009876345.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693425.1.xml",
+      "assembly": "pankb_assembly:GCF_022693425.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022132425.1.xml",
+      "assembly": "pankb_assembly:GCF_022132425.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_016697325.1.xml",
+      "assembly": "pankb_assembly:GCF_016697325.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_902166045.1.xml",
+      "assembly": "pankb_assembly:GCF_902166045.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_009874135.1.xml",
+      "assembly": "pankb_assembly:GCF_009874135.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_001406695.1.xml",
+      "assembly": "pankb_assembly:GCF_001406695.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_042847175.1.xml",
+      "assembly": "pankb_assembly:GCF_042847175.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_019131515.1.xml",
+      "assembly": "pankb_assembly:GCF_019131515.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709285.1.xml",
+      "assembly": "pankb_assembly:GCF_020709285.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964248465.1.xml",
+      "assembly": "pankb_assembly:GCF_964248465.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964252155.1.xml",
+      "assembly": "pankb_assembly:GCF_964252155.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_020709245.1.xml",
+      "assembly": "pankb_assembly:GCF_020709245.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_022693525.1.xml",
+      "assembly": "pankb_assembly:GCF_022693525.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_964241105.1.xml",
+      "assembly": "pankb_assembly:GCF_964241105.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_039521305.1.xml",
+      "assembly": "pankb_assembly:GCF_039521305.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    },
+    {
+      "filename": "GCF_027687515.1.xml",
+      "assembly": "pankb_assembly:GCF_027687515.1",
+      "collection": "iPKB_Clostridiaceae",
+      "prefix": "iPKB_"
+    }
+  ]
+}

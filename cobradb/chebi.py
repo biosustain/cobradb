@@ -1,3 +1,4 @@
+from pathlib import Path
 from typing import Dict, Optional, Tuple
 from libchebipy import ChebiEntity as lcpChebiEntity
 
@@ -8,6 +9,7 @@ import pandas as pd
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from cobradb import settings
 from cobradb.models import (
     ReferenceCompound,
     ReferenceReaction,
@@ -16,12 +18,12 @@ from cobradb.models import (
 from cobradb.api import utils
 
 parsers.set_auto_update(False)
-parsers.set_download_cache_path("/chebi/libChEBI")
+parsers.set_download_cache_path(Path(settings.chebi_cache_dir) / "libChEBI")
 
 
 def load_default_chebi_mapping() -> Dict[str, str]:
     try:
-        df = pd.read_csv("chebi_pH7_3_mapping.tsv", sep="\t", index_col=0, header=0)
+        df = pd.read_csv(settings.default_chebis, sep="\t", index_col=0, header=0)
         df.index = "CHEBI:" + df.index.astype(str)
         df["CHEBI_PH7_3"] = "CHEBI:" + df["CHEBI_PH7_3"].astype(str)
         return df["CHEBI_PH7_3"].to_dict()

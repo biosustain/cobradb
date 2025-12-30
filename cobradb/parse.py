@@ -85,21 +85,6 @@ def load_and_normalize(model_filepath: Union[str, PathLike]):
     return model, old_ids
 
 
-def _get_rule_prefs():
-    """Get gene_reaction_rule prefs."""
-    return load_tsv(settings.gene_reaction_rule_prefs, required_column_num=2)
-
-
-def _check_rule_prefs(rule_prefs, rule):
-    """Check the gene_reaction_rule against the prefs file, and return an existing
-    rule or the fixed one."""
-    for row in rule_prefs:
-        old_rule, new_rule = row
-        if old_rule == rule:
-            return new_rule
-    return rule
-
-
 def remove_boundary_metabolites(model):
     """Remove boundary metabolites (end in _b and only present in exchanges). Be
     sure to loop through a static list of ids so the list does not get shorter
@@ -386,9 +371,6 @@ def convert_ids(model):
     # take out the _b metabolites
     remove_boundary_metabolites(model)
 
-    # load fixes for gene_reaction_rule's
-    rule_prefs = _get_rule_prefs()
-
     reactions_to_remove = []
     for reaction in model.reactions:
         if not reaction.metabolites:
@@ -423,13 +405,6 @@ def convert_ids(model):
         reaction_id_dict[new_id].append(reaction.id)
         reaction.id = new_id
 
-        # fix the gene reaction rules
-        reaction.gene_reaction_rule = _check_rule_prefs(
-            rule_prefs, reaction.gene_reaction_rule
-        )
-    # for reaction in model.reactions:
-    #     # Create temporary, model-specific identifiers
-    #     reaction.id = f"__{model.id}__{reaction.id}"
     model.reactions._generate_index()
 
     # update the genes

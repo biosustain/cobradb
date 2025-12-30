@@ -34,22 +34,4 @@ model_genome = ~/path/to/cobradb_data/model-genome.txt
 compartment_names = ~/path/to/cobradb_data/compartment-names.txt
 
 
-reaction_hash_prefs = ~/path/to/cobradb_data/reaction-hash-prefs.txt
-
-# A tab-delimited text file where column 1 is the preferred metabolite ID and
-# the following columns are duplicates.
-metabolite_duplicates = ~/path/to/ome_data/metabolite-duplicates.txt
-
 data_source_preferences = ~/path/to/cobradb_data/annotation/data-source-prefs.txt
-
-# This file should be a tab-delimited text file where each row contains an
-# original gene_reaction_rule followed by a tab and a fixed
-# gene_reaction_rule.
-gene_reaction_rule_prefs = ~/path/to/cobradb_data/gene-reaction-rule-prefs.txt
-
-
-metabolite_duplicates = ~/path/to/ome_data/metabolite-duplicates.txt
-
-[EXECUTABLES]
-# Optionally provide a Java executable for running ModelPolisher
-java = /bin/java

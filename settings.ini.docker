@@ -1,0 +1,59 @@
+[GENERAL]
+# Number of processes for parallelization
+n_processes = 4
+
+[DATABASE]
+# Set host here or set environment variable COBRADB_POSTGRES_HOST
+postgres_host = biggr-db
+
+# Set port here or set environment variable COBRADB_POSTGRES_PORT
+postgres_port = 5432
+
+# Set user here or set environment variable COBRADB_POSTGRES_USER
+postgres_user = biggr
+
+# Set password here or set environment variable COBRADB_POSTGRES_PASSWORD
+postgres_password = POSTGRESDOCKERPASSWORD
+
+# Set database here or set environment variable COBRADB_POSTGRES_DATABASE
+postgres_database = biggr
+
+# Set test database here or set environment variable
+# COBRADB_POSTGRES_TEST_DATABASE
+postgres_test_database = cobradb_test
+
+[DATA]
+# The directory containing the genome-scale models
+# model_directory = /app/bigg_models_data/models
+model_directory = /input_models
+
+# The directory containing the reference sequences (as Genbank files)
+# refseq_directory = /genbank
+refseq_directory = /assemblies
+
+# A tab-delimited text file containing models, reference sequences, and
+# publication IDs
+# model_genome = /app/bigg_models_data/model-genome-iml1515.tsv
+# model_genome = /app/bigg_models_data/model-genome-small_set.tsv
+# model_genome = /app/model-genome-small_set_2.tsv
+# model_genome = /app/model-genome-small_set_4.json
+model_genome = /app/model-genome-set-6.json
+# model_genome = /app/model-genome-iML1515.json
+
+# A tab-delimited text file containing compartment IDs and their corresponding
+# names
+compartment_names = /datafiles/compartment-names.txt
+data_source_preferences = /app/bigg_models_data/data-source-prefs.txt
+
+taxonomy_nodes = /datafiles/nodes.dmp
+taxonomy_names = /datafiles/names.dmp
+
+rhea = /datafiles/rhea.ttl
+
+curated_metabolites = /datafiles/bigg_id_data.json
+
+curated_reactions = /datafiles/reaction_data.json
+
+default_chebis = /datafiles/chebi_pH7_3_mapping.tsv
+
+chebi_cache_dir = /chebi/

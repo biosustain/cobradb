@@ -1,0 +1,7 @@
+Sphinx
+sphinxcontrib-napoleon
+sphinx-autoapi
+nbsphinx
+sphinx-book-theme
+ipykernel
+pandoc

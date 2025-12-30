@@ -14,7 +14,6 @@ services:
     environment:
       LIBCHEBIPY_DOWNLOAD_DIR: "/chebi" 
     volumes:
-      - /data/biggr-genbank:/genbank
       - /data/biggr-assemblies:/assemblies
       - /data/biggr-bigg-models:/models
       - /data/biggr-input-models:/input_models

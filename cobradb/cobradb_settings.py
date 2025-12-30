@@ -18,10 +18,7 @@ class CobraDBSettings:
     postgres_test_database: str = "cobradb_test"
 
     compartment_names: str = ""
-    reaction_hash_prefs: str = ""
-    gene_reaction_rule_prefs: str = ""
     data_source_preferences: str = ""
-    metabolite_duplicates: str = ""
     rhea: str = ""
     curated_metabolites: str = ""
     curated_reactions: str = ""
@@ -68,8 +65,6 @@ class CobraDBSettings:
 
         if config.has_option("GENERAL", "n_processes"):
             self.n_processes = int(config.get("GENERAL", "n_processes"))
-        else:
-            print("No Java executable provided.")
 
         if not config.has_section("DATA"):
             raise Exception("DATA section was not found in settings.ini")
@@ -92,15 +87,14 @@ class CobraDBSettings:
         # these are optional
         for data_pref in [
             "compartment_names",
-            "reaction_hash_prefs",
-            "gene_reaction_rule_prefs",
             "data_source_preferences",
-            "metabolite_duplicates",
             "rhea",
             "curated_metabolites",
             "curated_reactions",
             "taxonomy_nodes",
             "taxonomy_names",
+            "chebi_cache_dir",
+            "default_chebis",
         ]:
             try:
                 setattr(self, data_pref, expanduser(config.get("DATA", data_pref)))
