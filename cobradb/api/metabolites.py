@@ -329,7 +329,7 @@ def add_chebi_annotations(
         annotation_db.properties.append(prop_db)
 
     alias_db = AnnotationLink(
-        identifier=chebi,
+        identifier=chebi.removeprefix("CHEBI:"),
         data_source_id=get_data_source_id("CHEBI", session),
     )
     annotation_db.links.append(alias_db)
