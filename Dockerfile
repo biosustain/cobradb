@@ -10,10 +10,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt /app
 RUN pip install -r requirements.txt
 
-RUN git clone https://github.com/pascalaldo/bigg_models_data.git bigg_models_data
+RUN git clone https://github.com/biosustain/bigg_models_data.git bigg_models_data
 
-RUN git clone https://github.com/pascalaldo/biggr_maps.git biggr_maps
-RUN 
+RUN git clone https://github.com/biosustain/biggr_maps.git biggr_maps
 WORKDIR /app/biggr_maps
 RUN python setup.py install
 
