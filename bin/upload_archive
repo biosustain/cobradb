@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+source .env
+
+FILE=$(date +%Y%m%d)
+mkdir -p "$FILE"
+
+cp -r \
+        /data/biggr-input-models \
+        /data/biggr-assemblies \
+        /data/biggr-postgres \
+        /data/biggr-bigg-models \
+        /data/biggr-datafiles \
+        /data/biggr-metanetx \
+        /data/biggr-chebi-cache \
+        "$FILE/"
+cp "$USED_JSON_FILE" "$FILE/"
+
+WEB_URL="https://biggr.blob.core.windows.net/backups"
+
+azcopy copy --recursive --overwrite=false --follow-symlinks \
+        "$FILE" \
+        "$WEB_URL/?$SAS"
