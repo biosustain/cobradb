@@ -719,7 +719,7 @@ def load_metabolites(session, model_db_id, model):
                             component_ref_mapping_db
                         )
                         session.add(metabolite_db)
-                        session.commit()
+                        session.flush()
                         break
 
         # if necessary, add the new metabolite, and keep track of the ID
@@ -1008,6 +1008,7 @@ def load_metabolites(session, model_db_id, model):
                     id_in_original_model=metabolite_id,
                 )
                 session.add(model_comp_comp_db)
+    session.commit()
 
 
 def compartmentalized_id_to_universal_compartmentalized_id(comp_comp_id):
@@ -1158,7 +1159,7 @@ def load_reactions(
                 get_or_create_reaction_for_universal_reaction(
                     session, universal_reaction_db, participants
                 )
-                session.commit()
+                session.flush()
                 print(f"reaction hash 3: {reaction_hash}")
                 reaction_db = session.scalars(
                     select(Reaction)
@@ -1218,12 +1219,12 @@ def load_reactions(
                     exchange_reaction=is_exchange,
                     reaction_name=reaction_name,
                 )
-                session.commit()
+                session.flush()
                 reaction_db = get_or_create_reaction_for_universal_reaction(
                     session, universal_reaction_db, participants
                 )
 
-                session.commit()
+                session.flush()
                 print(f"Collection id: {reaction_collection_id} ({collection_db.id})")
                 if universal_reaction_db is not None:
                     print(f"Created universal reaction")
@@ -1338,7 +1339,8 @@ def load_reactions(
             id_in_original_model=reaction_id,
         )
         session.add(model_reaction_db)
-        session.commit()
+        session.flush()
+    session.commit()
     return model_db_rxn_ids
 
 
