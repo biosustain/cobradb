@@ -123,6 +123,9 @@ def load_model_assemblies_json(
             elif model_assembly[0] == "pankb_assembly":
                 logging.warning(f"PanKB assembly: {model_assembly[1]}")
                 assemblies[model_assembly] = None
+            elif model_assembly[0] == "patric_assembly":
+                logging.warning(f"PATRIC assembly: {model_assembly[1]}")
+                assemblies[model_assembly] = None
 
         model_entry["assembly"] = model_assembly
 
