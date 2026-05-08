@@ -4,13 +4,13 @@ networks:
     external: false
 
 services:
-  cobradb-test:
+  cobradb-pipeline:
     build: .
     depends_on:
-      biggr-db:
+      cobradb-postgres:
         condition: service_healthy
     networks:
-      - biggr-net
+      - cobradb-net
     environment:
       LIBCHEBIPY_DOWNLOAD_DIR: "/chebi" 
     volumes:
@@ -21,7 +21,7 @@ services:
       - /data/biggr-datafiles:/datafiles
     stdin_open: true
     tty: true
-  biggr-db:
+  cobradb-postgres:
     container_name: cobradb-postgres
     image: postgres:17.6
     command: -c config_file=/etc/postgresql.conf
