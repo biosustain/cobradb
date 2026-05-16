@@ -139,6 +139,7 @@ def load_assembly(assembly_id, assembly_path, chromosome_accessions, session):
                 load_chromosome(session, record, genome_db_id)
 
     genome_db = session.get(Genome, genome_db_id)
+    # to do: add API to fetch organism information for an assembly from Patric
     if not genome_db.organism and accession_type == "ncbi_assembly":
         organism_info = ncbi_data.get_organism_for_ncbi_assembly_accession(
             genome_db.accession_value
