@@ -68,7 +68,7 @@ def load_and_normalize(model_filepath: Union[str, PathLike]):
     model_filepath = Path(model_filepath)
 
     # load the model
-    if model_filepath.suffix == ".xml":
+    if model_filepath.suffix in (".xml", ".sbml"):
         model = cobra.io.read_sbml_model(model_filepath)
     elif model_filepath.suffix == ".mat":
         model = cobra.io.load_matlab_model(model_filepath)
