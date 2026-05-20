@@ -1,5 +1,5 @@
 networks:
-  biggr-net:
+  cobradb-net:
     name: cobradb-net
     external: false
 
@@ -39,4 +39,4 @@ services:
     env_file:
       - .env
     networks:
-      - biggr-net
+      - cobradb-net
