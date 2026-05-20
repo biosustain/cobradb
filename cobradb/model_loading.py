@@ -296,6 +296,15 @@ def load_model(
     if model_data.get("prefix") is not None:
         model.id = f"{model_data['prefix']}{model.id}"
 
+    # Fallback: if model.id is empty in the model file, derive bigg_id from the filename 
+    if not model.id:
+        from pathlib import Path as _P
+        derived_id = _P(model_data["filename"]).stem.replace(".", "_")
+        logging.warning(
+            f"Empty model.id for {model_data['filename']}, deriving bigg_id={derived_id}"
+        )
+        model.id = derived_id
+
     model_bigg_id = model.id
 
     # check that the model doesn't already exist
