@@ -21,6 +21,7 @@ from sqlalchemy import (
     MetaData,
     Enum,
     DateTime,
+    Index,
     UniqueConstraint,
     func,
     or_,
@@ -363,7 +364,10 @@ class GenomeRegion(Base, BiGGBase):
     dna_sequence: Mapped[Optional[str]]
     protein_sequence: Mapped[Optional[str]]
 
-    __table_args__ = (UniqueConstraint("bigg_id", "chromosome_id"),)
+    __table_args__ = (
+        UniqueConstraint("bigg_id", "chromosome_id"),
+        Index("idx_genome_region_bigg_id_chrom", "bigg_id", "chromosome_id"),
+    )
 
     __mapper_args__ = {"polymorphic_identity": "genome_region", "polymorphic_on": type}
 
@@ -1128,7 +1132,14 @@ class ModelCompartmentalizedComponent(
         back_populates="model_compartmentalized_component"
     )
 
-    __table_args__ = (UniqueConstraint("compartmentalized_component_id", "model_id"),)
+    __table_args__ = (
+        UniqueConstraint("compartmentalized_component_id", "model_id"),
+        Index(
+            "idx_mcc_model_orig_id",
+            "model_id",
+            "id_in_original_model",
+        ),
+    )
 
 
 class Compartment(Base, BiGGBase):
@@ -1518,6 +1529,7 @@ class Reaction(Base, BiGGBase):
     __table_args__ = (
         UniqueConstraint("hash", "collection_id"),
         UniqueConstraint("bigg_id"),
+        Index("idx_reaction_universal_id", "universal_reaction_id"),
     )
 
     def __repr__(self):
@@ -1640,6 +1652,10 @@ class ReactionMatrix(Base):
     )
     compartmentalized_component: Mapped[CompartmentalizedComponent] = relationship(
         back_populates="matrix"
+    )
+
+    __table_args__ = (
+        Index("idx_reaction_matrix_reaction_id", "reaction_id"),
     )
 
 
