@@ -41,7 +41,10 @@ def create_model_base_filename(session: Session, bigg_id: str) -> str:
             filename_hash = hashlib.sha256(f"{base_filename}{i}".encode()).hexdigest()
             proposed_filename = f"{base_filename}_{filename_hash[:8]}"
         model_db = session.scalars(
-            select(Model).filter(Model.base_filename == proposed_filename).limit(1)
+            select(Model)
+            .filter(Model.base_filename == proposed_filename)
+            .filter(Model.bigg_id != bigg_id)
+            .limit(1)
         ).first()
         if not model_db:
             return proposed_filename
