@@ -89,6 +89,7 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
 
     base_filename = create_model_base_filename(session, model_db.bigg_id)
     model_output_path = Path("/models/models/") / base_filename
+    model_output_path.parent.mkdir(parents=True, exist_ok=True)
     logging.warning(f"Writing corrected model to: {model_output_path}")
     write_sbml_model(model, model_output_path.with_suffix(".biggr.sbml"))
     save_json_model(model, model_output_path.with_suffix(".biggr.json"))
