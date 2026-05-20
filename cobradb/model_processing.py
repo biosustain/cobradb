@@ -131,6 +131,7 @@ def process_metabolites(session, model, model_db_id):
                     joinedload(CompartmentalizedComponent.component).joinedload(
                         Component.universal_component
                     ),
+                    joinedload(CompartmentalizedComponent.compartment),
                 )
             )
             .join(ModelCompartmentalizedComponent.compartmentalized_component)
@@ -154,6 +155,7 @@ def process_metabolites(session, model, model_db_id):
         metabolite.name = metabolite_db.name
         metabolite.charge = float(metabolite_db.charge)
         metabolite.formula = metabolite_db.formula
+        metabolite.compartment = comp_component_db.compartment.bigg_id
 
         metabolite.annotation["biggr"] = comp_component_db.bigg_id
         metabolite.annotation["sbo"] = "SBO:0000247"
