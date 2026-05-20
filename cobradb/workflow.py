@@ -30,6 +30,7 @@ def process_model_workflow(
         if not skip_memote and model_bigg_id is not None:
             model_biggr_filename = f"/models/models/{model_bigg_id}.biggr.sbml"
             memote_result_filename = f"/models/memote/{model_bigg_id}.biggr.json.gz"
+            Path(memote_result_filename).parent.mkdir(parents=True, exist_ok=True)
 
             successful_memote_run = False
             try:
