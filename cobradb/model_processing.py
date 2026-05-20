@@ -59,6 +59,15 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
     model, old_parsed_ids = parse.load_and_normalize(model_filepath)
     if model_data.get("prefix") is not None:
         model.id = f"{model_data['prefix']}{model.id}"
+
+    # Fallback: if SBML model.id is empty, derive from filename
+    if not model.id:
+        derived_id = Path(model_data["filename"]).stem.replace(".", "_")
+        logging.warning(
+            f"Empty model.id for {model_data['filename']}, deriving bigg_id={derived_id}"
+        )
+        model.id = derived_id
+
     model_bigg_id = model.id
 
     # check that the model exists
