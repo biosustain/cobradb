@@ -82,6 +82,18 @@ run the upload script with
 cd ../cobradb && bin/upload_archive
 ```
 
+If you don't have the azcopy installed already, you can install the non-snap
+version with the following command
+
+```bash
+wget -O /tmp/azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar xf /tmp/azcopy.tar.gz -C /tmp
+sudo mv /tmp/azcopy_linux_amd64_*/azcopy /usr/local/bin/azcopy
+```
+
+This standalone binary can run unsandboxed and read any path the calling user
+has access to.
+
 ## model-genome-set.json reference
 
 The model list json file has the following shape:
