@@ -1,23 +1,24 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
+set -e
 source .env
 
-FILE=$(date +%Y%m%d)
-mkdir -p "$FILE"
+STAMP=$(date +%Y%m%d)
+DEST="https://biggr.blob.core.windows.net/backups/${STAMP}"
 
-cp -r \
+# upload each /data source dir as a subfolder under STAMP/
+for src in \
         /data/biggr-input-models \
         /data/biggr-assemblies \
         /data/biggr-postgres \
         /data/biggr-bigg-models \
         /data/biggr-datafiles \
         /data/biggr-metanetx \
-        /data/biggr-chebi-cache \
-        "$FILE/"
-cp "$USED_JSON_FILE" "$FILE/"
+        /data/biggr-chebi-cache; do
+    azcopy copy --recursive --overwrite=false --follow-symlinks \
+        "$src" \
+        "${DEST}/?${SAS}"
+done
 
-WEB_URL="https://biggr.blob.core.windows.net/backups"
-
-azcopy copy --recursive --overwrite=false --follow-symlinks \
-        "$FILE" \
-        "$WEB_URL/?$SAS"
+# upload JSON file for this run
+azcopy copy --overwrite=false "$USED_JSON_FILE" "${DEST}/?${SAS}"
