@@ -1,9 +1,10 @@
-# cobradb
+# Cobradb
 
 Cobradb loads genome-scale metabolic models (GEMs) and genome annotations into a
 relational PostgreSQL database. It works both as an independent ETL pipeline
 that pipes data into [BiGGr Models](https://biggr.org) database, and as an
-installed package that does the same for [BiGGr Models](https://biggr.org).
+installed package providing ORM models that the
+[BiGGr Models](https://biggr.org) web app uses to query the database.
 
 ## What cobradb does as the ETL pipeline
 
@@ -11,10 +12,10 @@ installed package that does the same for [BiGGr Models](https://biggr.org).
    as input, and refers to Rhea, ChEBI, curated annotation files, etc. in the
    mounted directories.
 2. Normalizes IDs, deduplicates entities, applies curation rules.
-3. Writes everything to a PostgreSQL database used by the
-   [BiGGr Models](https://biggr.org) web app.
+3. Writes data including models, genomes, GPRs, cross references to a PostgreSQL
+   database.
 4. Produces standardized SBML files and runs MEMOTE quality checks on each
-   model, writing results back to the same database.
+   model, writing both results to the output folder.
 
 ## Running the pipeline
 
@@ -51,24 +52,50 @@ docker compose up --build --force-recreate -d
 
 ### 3. Switch to production and archive ETL artifacts
 
-After the pipeline is done, you can stop the web app services, remove the
-outdated `/data/biggr-bigg-models`, `/data/biggr-postgres` folders, and stop the
-PostgreSQL container with
+After the pipeline is done, stop the ETL stack so the cobradb PostgreSQL
+container releases its lock on `/data/biggr-postgres-new` (two postgres
+instances cannot share the same data directory):
 
 ```bash
-cd ../biggr_models && docker compose --profile prod down && sudo rm -rf /data/biggr-bigg-models /data/biggr-postgres && cd ../cobradb && docker compose down
+docker compose down
 ```
 
-Rename the new output folders with
+Then test the new database with the web app before discarding the old data.
+Edit `../biggr_models/docker-compose.yml` to point the `biggr-web` and
+`biggr-db` volumes at the `-new` paths:
 
-```bash
-sudo mv /data/biggr-bigg-models-new /data/biggr-bigg-models && sudo mv /data/biggr-postgres-new /data/biggr-postgres
+```yaml
+biggr-web:
+  volumes:
+    - /data/biggr-bigg-models-new/:/models
+biggr-db:
+  volumes:
+    - /data/biggr-postgres-new:/var/lib/postgresql/data
 ```
 
-and restart the web app with
+Bring the web app down and back up against the new data:
 
 ```bash
-cd ../biggr_models && docker compose --profile prod up -d
+cd ../biggr_models && docker compose --profile prod down
+docker compose --profile prod up -d
+```
+
+Once the results are verified, promote the new directories and remove the
+old ones. Keep the old data on disk until you're sure — this step is
+irreversible.
+
+```bash
+sudo rm -rf /data/biggr-bigg-models /data/biggr-postgres
+sudo mv /data/biggr-bigg-models-new /data/biggr-bigg-models
+sudo mv /data/biggr-postgres-new   /data/biggr-postgres
+```
+
+Revert the volume paths in `biggr_models/docker-compose.yml` back to the
+non-`-new` paths and restart:
+
+```bash
+docker compose --profile prod down
+docker compose --profile prod up -d
 ```
 
 It is good practice to ensure reproducibility and upload all ETL related input,
