@@ -1027,7 +1027,10 @@ class GeneReactionMatrix(Base):
         back_populates="reaction_matrix"
     )
 
-    __table_args__ = (UniqueConstraint("model_gene_id", "model_reaction_id"),)
+    __table_args__ = (
+        UniqueConstraint("model_gene_id", "model_reaction_id"),
+        Index("idx_grm_model_reaction_id", "model_reaction_id"),
+    )
 
     def __repr__(self):
         return "<cobradb GeneReactionMatrix(id={self.id}, model_gene_id={self.model_gene_id}, model_reaction_id={self.model_reaction_id})>".format(
