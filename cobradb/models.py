@@ -26,6 +26,7 @@ from sqlalchemy import (
     func,
     or_,
     select,
+    text,
 )
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -1728,6 +1729,22 @@ class MemoteResult(Base):
     result = mapped_column(custom_enums["test_result"], nullable=True)
 
     data_count: Mapped[Optional[int]]
+
+    __table_args__ = (
+        Index("idx_memote_result_model_id", "model_id"),
+        Index(
+            "idx_memote_result_model_reaction_id",
+            "model_reaction_id",
+            postgresql_where=text("model_reaction_id IS NOT NULL"),
+        ),
+        Index(
+            "idx_memote_result_model_compartmentalized_component_id",
+            "model_compartmentalized_component_id",
+            postgresql_where=text(
+                "model_compartmentalized_component_id IS NOT NULL"
+            ),
+        ),
+    )
 
 
 class EscherModule(Base, BiGGBase):
