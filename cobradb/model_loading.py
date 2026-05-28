@@ -296,10 +296,13 @@ def load_model(
     if model_data.get("prefix") is not None:
         model.id = f"{model_data['prefix']}{model.id}"
 
-    # Fallback: if model.id is empty in the model file, derive bigg_id from the filename 
+    # Fallback: if model.id is empty in the model file, derive bigg_id from the filename
     if not model.id:
         from pathlib import Path as _P
         derived_id = _P(model_data["filename"]).stem.replace(".", "_")
+        while derived_id.endswith(("_json", "_xml", "_mat", "_sbml")):
+            import re as _re
+            derived_id = _re.sub(r"_(json|xml|mat|sbml)$", "", derived_id)
         logging.warning(
             f"Empty model.id for {model_data['filename']}, deriving bigg_id={derived_id}"
         )

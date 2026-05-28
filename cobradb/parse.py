@@ -423,6 +423,8 @@ def convert_ids(model):
 
     # fix the model id
     bigg_id = re.sub(r"[^a-zA-Z0-9_]", "_", model.id)
+    while bigg_id.endswith(("_json", "_xml", "_mat", "_sbml")):
+        bigg_id = re.sub(r"_(json|xml|mat|sbml)$", "", bigg_id)
     model.id = bigg_id
 
     old_ids = {
