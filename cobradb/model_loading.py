@@ -308,6 +308,13 @@ def load_model(
         )
         model.id = derived_id
 
+    # Manifest-level override: if the entry explicitly specifies bigg_id,
+    # use it as-is. This takes precedence over the file-derived id (and prefix/
+    # fallback). Useful when the model file ID is e.g. a BV-BRC accession but
+    # we want to expose the model under its NCBI assembly accession in BiGGr.
+    if model_data.get("bigg_id"):
+        model.id = model_data["bigg_id"]
+
     model_bigg_id = model.id
 
     # check that the model doesn't already exist
