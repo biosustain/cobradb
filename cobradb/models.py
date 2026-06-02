@@ -21,10 +21,12 @@ from sqlalchemy import (
     MetaData,
     Enum,
     DateTime,
+    Index,
     UniqueConstraint,
     func,
     or_,
     select,
+    text,
 )
 from sqlalchemy.orm import (
     DeclarativeBase,
@@ -363,7 +365,10 @@ class GenomeRegion(Base, BiGGBase):
     dna_sequence: Mapped[Optional[str]]
     protein_sequence: Mapped[Optional[str]]
 
-    __table_args__ = (UniqueConstraint("bigg_id", "chromosome_id"),)
+    __table_args__ = (
+        UniqueConstraint("bigg_id", "chromosome_id"),
+        Index("idx_genome_region_bigg_id_chrom", "bigg_id", "chromosome_id"),
+    )
 
     __mapper_args__ = {"polymorphic_identity": "genome_region", "polymorphic_on": type}
 
@@ -1023,7 +1028,10 @@ class GeneReactionMatrix(Base):
         back_populates="reaction_matrix"
     )
 
-    __table_args__ = (UniqueConstraint("model_gene_id", "model_reaction_id"),)
+    __table_args__ = (
+        UniqueConstraint("model_gene_id", "model_reaction_id"),
+        Index("idx_grm_model_reaction_id", "model_reaction_id"),
+    )
 
     def __repr__(self):
         return "<cobradb GeneReactionMatrix(id={self.id}, model_gene_id={self.model_gene_id}, model_reaction_id={self.model_reaction_id})>".format(
@@ -1128,7 +1136,14 @@ class ModelCompartmentalizedComponent(
         back_populates="model_compartmentalized_component"
     )
 
-    __table_args__ = (UniqueConstraint("compartmentalized_component_id", "model_id"),)
+    __table_args__ = (
+        UniqueConstraint("compartmentalized_component_id", "model_id"),
+        Index(
+            "idx_mcc_model_orig_id",
+            "model_id",
+            "id_in_original_model",
+        ),
+    )
 
 
 class Compartment(Base, BiGGBase):
@@ -1518,6 +1533,7 @@ class Reaction(Base, BiGGBase):
     __table_args__ = (
         UniqueConstraint("hash", "collection_id"),
         UniqueConstraint("bigg_id"),
+        Index("idx_reaction_universal_id", "universal_reaction_id"),
     )
 
     def __repr__(self):
@@ -1642,6 +1658,10 @@ class ReactionMatrix(Base):
         back_populates="matrix"
     )
 
+    __table_args__ = (
+        Index("idx_reaction_matrix_reaction_id", "reaction_id"),
+    )
+
 
 class ComponentIDMapping(Base):
     __tablename__ = "component_id_mapping"
@@ -1709,6 +1729,22 @@ class MemoteResult(Base):
     result = mapped_column(custom_enums["test_result"], nullable=True)
 
     data_count: Mapped[Optional[int]]
+
+    __table_args__ = (
+        Index("idx_memote_result_model_id", "model_id"),
+        Index(
+            "idx_memote_result_model_reaction_id",
+            "model_reaction_id",
+            postgresql_where=text("model_reaction_id IS NOT NULL"),
+        ),
+        Index(
+            "idx_memote_result_model_compartmentalized_component_id",
+            "model_compartmentalized_component_id",
+            postgresql_where=text(
+                "model_compartmentalized_component_id IS NOT NULL"
+            ),
+        ),
+    )
 
 
 class EscherModule(Base, BiGGBase):

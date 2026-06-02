@@ -332,10 +332,13 @@ def load_memote_results(model_bigg_id, filename, session):
                         print(test_result)
 
                     if is_dict:
+                        v = prop_val[k]
+                        if v is None:
+                            continue
                         if prop in ["data", "metric", "duration"]:
-                            specific_results[k][prop] = float(prop_val[k])
+                            specific_results[k][prop] = float(v)
                         else:
-                            specific_results[k][prop] = prop_val[k]
+                            specific_results[k][prop] = v
 
         general_result = MemoteResult(**general_result)
         session.add(general_result)

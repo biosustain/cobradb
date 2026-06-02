@@ -1,36 +1,36 @@
 networks:
-  biggr-net:
-    name: biggr-net
+  cobradb-net:
+    name: cobradb-net
     external: false
 
 services:
-  cobradb-test:
+  cobradb-pipeline:
     build: .
     depends_on:
-      biggr-db:
+      cobradb-postgres:
         condition: service_healthy
     networks:
-      - biggr-net
+      - cobradb-net
     environment:
       LIBCHEBIPY_DOWNLOAD_DIR: "/chebi" 
     volumes:
       - /data/biggr-assemblies:/assemblies
-      - /data/biggr-bigg-models:/models
+      - /data/biggr-bigg-models-new:/models
       - /data/biggr-input-models:/input_models
       - /data/biggr-chebi-cache:/chebi
       - /data/biggr-datafiles:/datafiles
     stdin_open: true
     tty: true
-  biggr-db:
+  cobradb-postgres:
     container_name: cobradb-postgres
     image: postgres:17.6
     command: -c config_file=/etc/postgresql.conf
     restart: always
     volumes:
-      - /data/biggr-postgres:/var/lib/postgresql/data
+      - /data/biggr-postgres-new:/var/lib/postgresql/data
       - ./postgresql.conf:/etc/postgresql.conf
     ports:
-      - "5432:5432"
+      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
       interval: 1s
@@ -39,4 +39,4 @@ services:
     env_file:
       - .env
     networks:
-      - biggr-net
+      - cobradb-net

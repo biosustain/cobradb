@@ -41,7 +41,10 @@ def create_model_base_filename(session: Session, bigg_id: str) -> str:
             filename_hash = hashlib.sha256(f"{base_filename}{i}".encode()).hexdigest()
             proposed_filename = f"{base_filename}_{filename_hash[:8]}"
         model_db = session.scalars(
-            select(Model).filter(Model.base_filename == proposed_filename).limit(1)
+            select(Model)
+            .filter(Model.base_filename == proposed_filename)
+            .filter(Model.bigg_id != bigg_id)
+            .limit(1)
         ).first()
         if not model_db:
             return proposed_filename
@@ -56,6 +59,15 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
     model, old_parsed_ids = parse.load_and_normalize(model_filepath)
     if model_data.get("prefix") is not None:
         model.id = f"{model_data['prefix']}{model.id}"
+
+    # Fallback: if SBML model.id is empty, derive from filename
+    if not model.id:
+        derived_id = Path(model_data["filename"]).stem.replace(".", "_")
+        logging.warning(
+            f"Empty model.id for {model_data['filename']}, deriving bigg_id={derived_id}"
+        )
+        model.id = derived_id
+
     model_bigg_id = model.id
 
     # check that the model exists
@@ -77,6 +89,7 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
 
     base_filename = create_model_base_filename(session, model_db.bigg_id)
     model_output_path = Path("/models/models/") / base_filename
+    model_output_path.parent.mkdir(parents=True, exist_ok=True)
     logging.warning(f"Writing corrected model to: {model_output_path}")
     write_sbml_model(model, model_output_path.with_suffix(".biggr.sbml"))
     save_json_model(model, model_output_path.with_suffix(".biggr.json"))
@@ -118,6 +131,7 @@ def process_metabolites(session, model, model_db_id):
                     joinedload(CompartmentalizedComponent.component).joinedload(
                         Component.universal_component
                     ),
+                    joinedload(CompartmentalizedComponent.compartment),
                 )
             )
             .join(ModelCompartmentalizedComponent.compartmentalized_component)
@@ -141,6 +155,7 @@ def process_metabolites(session, model, model_db_id):
         metabolite.name = metabolite_db.name
         metabolite.charge = float(metabolite_db.charge)
         metabolite.formula = metabolite_db.formula
+        metabolite.compartment = comp_component_db.compartment.bigg_id
 
         metabolite.annotation["biggr"] = comp_component_db.bigg_id
         metabolite.annotation["sbo"] = "SBO:0000247"

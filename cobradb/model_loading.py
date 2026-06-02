@@ -123,6 +123,9 @@ def load_model_assemblies_json(
             elif model_assembly[0] == "pankb_assembly":
                 logging.warning(f"PanKB assembly: {model_assembly[1]}")
                 assemblies[model_assembly] = None
+            elif model_assembly[0] == "patric_assembly":
+                logging.warning(f"PATRIC assembly: {model_assembly[1]}")
+                assemblies[model_assembly] = None
 
         model_entry["assembly"] = model_assembly
 
@@ -292,6 +295,25 @@ def load_model(
 
     if model_data.get("prefix") is not None:
         model.id = f"{model_data['prefix']}{model.id}"
+
+    # Fallback: if model.id is empty in the model file, derive bigg_id from the filename
+    if not model.id:
+        from pathlib import Path as _P
+        derived_id = _P(model_data["filename"]).stem.replace(".", "_")
+        while derived_id.endswith(("_json", "_xml", "_mat", "_sbml")):
+            import re as _re
+            derived_id = _re.sub(r"_(json|xml|mat|sbml)$", "", derived_id)
+        logging.warning(
+            f"Empty model.id for {model_data['filename']}, deriving bigg_id={derived_id}"
+        )
+        model.id = derived_id
+
+    # Manifest-level override: if the entry explicitly specifies bigg_id,
+    # use it as-is. This takes precedence over the file-derived id (and prefix/
+    # fallback). Useful when the model file ID is e.g. a BV-BRC accession but
+    # we want to expose the model under its NCBI assembly accession in BiGGr.
+    if model_data.get("bigg_id"):
+        model.id = model_data["bigg_id"]
 
     model_bigg_id = model.id
 
@@ -716,7 +738,7 @@ def load_metabolites(session, model_db_id, model):
                             component_ref_mapping_db
                         )
                         session.add(metabolite_db)
-                        session.commit()
+                        session.flush()
                         break
 
         # if necessary, add the new metabolite, and keep track of the ID
@@ -1005,6 +1027,7 @@ def load_metabolites(session, model_db_id, model):
                     id_in_original_model=metabolite_id,
                 )
                 session.add(model_comp_comp_db)
+    session.commit()
 
 
 def compartmentalized_id_to_universal_compartmentalized_id(comp_comp_id):
@@ -1155,7 +1178,7 @@ def load_reactions(
                 get_or_create_reaction_for_universal_reaction(
                     session, universal_reaction_db, participants
                 )
-                session.commit()
+                session.flush()
                 print(f"reaction hash 3: {reaction_hash}")
                 reaction_db = session.scalars(
                     select(Reaction)
@@ -1215,12 +1238,12 @@ def load_reactions(
                     exchange_reaction=is_exchange,
                     reaction_name=reaction_name,
                 )
-                session.commit()
+                session.flush()
                 reaction_db = get_or_create_reaction_for_universal_reaction(
                     session, universal_reaction_db, participants
                 )
 
-                session.commit()
+                session.flush()
                 print(f"Collection id: {reaction_collection_id} ({collection_db.id})")
                 if universal_reaction_db is not None:
                     print(f"Created universal reaction")
@@ -1335,7 +1358,8 @@ def load_reactions(
             id_in_original_model=reaction_id,
         )
         session.add(model_reaction_db)
-        session.commit()
+        session.flush()
+    session.commit()
     return model_db_rxn_ids
 
 
