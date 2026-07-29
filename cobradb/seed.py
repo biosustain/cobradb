@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 from sqlalchemy import select
@@ -452,3 +453,66 @@ def push_model_seed_reactions(modelseed_db, session):
             if not found_match:
                 annotation_db.reaction_mappings.append(annotation_mapping)
     session.commit()
+
+    fill_universal_reaction_names_from_annotations(session)
+
+
+# Values that appear in annotation name properties but carry no information.
+PLACEHOLDER_NAMES = {"", "-", "null", "na", "n/a", "none", "unknown"}
+
+
+def _is_usable_name(value):
+    if value is None:
+        return False
+    stripped = value.strip()
+    return len(stripped) > 2 and stripped.lower() not in PLACEHOLDER_NAMES
+
+
+def fill_universal_reaction_names_from_annotations(session):
+    """Give nameless universal reactions a name from their annotations.
+
+    A universal reaction only gets a name at creation time, from either its
+    reference reaction or the model file it came from
+    (api.reactions.get_or_create_universal_reaction). Reactions that match
+    neither are left with name=None, even when ModelSEED annotations carrying
+    perfectly good names are attached later.
+
+    This fills those in with the first usable annotation name, skipping
+    placeholders like "-" and "" that ModelSEED uses for missing values.
+    Annotation order is preserved, so the primary name wins over the aliases
+    that follow it.
+
+    Only touches rows where name IS NULL, so it never overwrites a name that
+    came from a reference reaction or a model.
+
+    Returns the number of reactions updated.
+    """
+    rows = session.execute(
+        select(UniversalReaction.id, AnnotationProperty.value_str)
+        .join(Reaction, Reaction.universal_reaction_id == UniversalReaction.id)
+        .join(
+            ReactionAnnotationMapping,
+            ReactionAnnotationMapping.reaction_id == Reaction.id,
+        )
+        .join(
+            AnnotationProperty,
+            AnnotationProperty.annotation_id == ReactionAnnotationMapping.annotation_id,
+        )
+        .filter(UniversalReaction.name.is_(None))
+        .filter(AnnotationProperty.key == "name")
+        .order_by(UniversalReaction.id, AnnotationProperty.id)
+    ).all()
+
+    names = {}
+    for universal_reaction_id, value in rows:
+        if universal_reaction_id in names:
+            continue
+        if _is_usable_name(value):
+            names[universal_reaction_id] = value.strip()
+
+    for universal_reaction_id, name in names.items():
+        session.get(UniversalReaction, universal_reaction_id).name = name
+    session.commit()
+
+    logging.info(f"Named {len(names)} universal reactions from annotations")
+    return len(names)
