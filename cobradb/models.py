@@ -895,6 +895,7 @@ class Model(Base, BiGGBase):
     taxon: Mapped[Optional[Taxon]] = relationship(back_populates="models")
 
     published_filename: Mapped[Optional[str]]
+    method: Mapped[Optional[str]]
     date_modified: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
