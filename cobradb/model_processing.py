@@ -68,10 +68,17 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
         )
         model.id = derived_id
 
+    if model_data.get("bigg_id"):
+        model.id = model_data["bigg_id"]
+
     model_bigg_id = model.id
 
     # check that the model exists
     if (model_db := utils.get_object_by_bigg_id(session, model_bigg_id, Model)) is None:
+        logging.error(
+            f"Model {model_bigg_id} (from {model_data.get('filename')}) is not in "
+            "the database; skipping export and memote."
+        )
         return None, None
     model_db_id = model_db.id
 
