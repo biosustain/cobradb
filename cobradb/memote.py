@@ -5,13 +5,17 @@ import re
 import cobra
 from sqlalchemy import select
 from cobradb.api import utils
+import memote
 import memote.suite.api as api
 from memote.suite.results import ResultManager
+
+memote_version = getattr(memote, "__version__", None)
 
 from cobradb.models import (
     AlreadyLoadedError,
     CompartmentalizedComponent,
     MemoteResult,
+    MemoteRun,
     MemoteTest,
     Model,
     ModelCompartmentalizedComponent,
@@ -152,9 +156,47 @@ MEMOTE_REACTION_REGEX = re.compile(
 )
 
 
-def run_memote(model_filename, result_filename):
+SOLVER = "glpk"
+
+
+def record_memote_run(session, model_db, results, skip=None):
+    """Record which MEMOTE version produced this model's results.
+
+    MEMOTE does not write its own version into the result file -- meta.packages
+    lists cobrapy and the rest but leaves "memote" as None -- so read it off the
+    installed package instead.
+
+    Updates the row in place when one exists, so re-running a model does not
+    leave a stale version behind.
+    """
+    cobrapy_version = results.get("meta", {}).get("packages", {}).get("cobra")
+    skipped_tests = ", ".join(sorted(skip)) if skip else None
+
+    run_db = session.scalars(
+        select(MemoteRun).filter(MemoteRun.model_id == model_db.id).limit(1)
+    ).first()
+    if run_db is None:
+        run_db = MemoteRun(model=model_db)
+        session.add(run_db)
+
+    run_db.memote_version = memote_version
+    run_db.cobrapy_version = cobrapy_version or cobra.__version__
+    run_db.solver = SOLVER
+    run_db.skipped_tests = skipped_tests
+
+
+def run_memote(model_filename, result_filename, skip=None):
+    """Run the MEMOTE suite and store the result file.
+
+    skip names tests to leave out. GLPK aborts the process at the C level on
+    the largest models (RECON1 dies in test_inconsistent_min_stoichiometry),
+    and since that is not a Python exception it cannot be caught -- the only
+    way to get a report for such a model is to not run the test. Whatever is
+    skipped is recorded by load_memote_results so a missing test is not
+    mistaken for a failing one.
+    """
     config = cobra.Configuration()
-    config.solver = "glpk"
+    config.solver = SOLVER
 
     # Check if the model can be loaded at all.
     model, sbml_ver, notifications = api.validate_model(model_filename)
@@ -167,6 +209,7 @@ def run_memote(model_filename, result_filename):
         model=model,
         sbml_version=sbml_ver,
         results=True,
+        skip=skip,
         solver_timeout=10,
     )
 
@@ -174,7 +217,7 @@ def run_memote(model_filename, result_filename):
     manager.store(result, filename=result_filename)
 
 
-def load_memote_results(model_bigg_id, filename, session):
+def load_memote_results(model_bigg_id, filename, session, skip=None):
     print(f"Loading memote results for {model_bigg_id}")
 
     with gzip.open(filename, "rb") as f:
@@ -193,6 +236,8 @@ def load_memote_results(model_bigg_id, filename, session):
             f"There are already Memote results for {model_bigg_id} in the database",
             bigg_id=model_bigg_id,
         )
+
+    record_memote_run(session, model_db, results, skip=skip)
 
     for test_func, test_result in results["tests"].items():
         test_bigg_id = test_func

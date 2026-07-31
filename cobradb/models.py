@@ -914,6 +914,7 @@ class Model(Base, BiGGBase):
     )
     escher_maps: Mapped[List["EscherMap"]] = relationship(back_populates="model")
     memote_results: Mapped[List["MemoteResult"]] = relationship(back_populates="model")
+    memote_run: Mapped[Optional["MemoteRun"]] = relationship(back_populates="model")
 
     __table_args__ = (UniqueConstraint("bigg_id"), UniqueConstraint("base_filename"))
 
@@ -1746,6 +1747,22 @@ class MemoteResult(Base):
             ),
         ),
     )
+
+
+class MemoteRun(Base):
+    __tablename__ = "memote_run"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    model_id: Mapped[int] = mapped_column(ForeignKey(Model.id))
+    model: Mapped["Model"] = relationship(back_populates="memote_run")
+
+    memote_version: Mapped[Optional[str]] = mapped_column(String(32))
+    cobrapy_version: Mapped[Optional[str]] = mapped_column(String(32))
+    solver: Mapped[Optional[str]] = mapped_column(String(32))
+    skipped_tests: Mapped[Optional[str]]
+
+    __table_args__ = (UniqueConstraint("model_id"),)
 
 
 class EscherModule(Base, BiGGBase):
