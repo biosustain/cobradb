@@ -1783,7 +1783,7 @@ class MemoteRun(Base):
     skipped_tests: Mapped[Optional[str]]
 
     __table_args__ = (UniqueConstraint("model_id"),)
-x
+
 
 class EscherModule(Base, BiGGBase):
     __tablename__ = "escher_module"
