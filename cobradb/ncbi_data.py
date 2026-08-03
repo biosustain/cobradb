@@ -63,3 +63,20 @@ def get_organism_for_ncbi_assembly_accession(
         strain = infraspecific.get("strain")
 
     return organism_name, tax_id, strain
+
+
+def resolve_organism(accession: str) -> Optional[Tuple[str, int, Optional[str]]]:
+    """Look up an assembly accession, retrying without the version suffix.
+
+    RefSeq versions get superseded (GCF_x.1 -> GCF_x.2) and the old versioned
+    accession then returns nothing, while the unversioned one resolves to the
+    current version. Accessions that are not GenBank/RefSeq assemblies (PATRIC
+    genome ids, for instance) are skipped rather than sent to the API.
+    """
+    if accession is None or not accession.startswith(("GCA_", "GCF_")):
+        return None
+
+    info = get_organism_for_ncbi_assembly_accession(accession)
+    if info is None and "." in accession:
+        info = get_organism_for_ncbi_assembly_accession(accession.rsplit(".", 1)[0])
+    return info

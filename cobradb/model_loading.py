@@ -42,6 +42,7 @@ from cobradb.models import (
     UniversalComponent,
     UniversalReaction,
 )
+from cobradb import ncbi_data
 from cobradb import settings
 from cobradb import parse
 from cobradb.api import utils
@@ -347,6 +348,13 @@ def load_model(
                 )
             )
         genome_id = genome_db.id
+        # The genome has no organism when it was loaded without a GenBank file
+        # and NCBI had no record for it at the time. Try again here so the
+        # model does not end up with a blank organism in the web tables.
+        if not genome_db.organism:
+            organism_info = ncbi_data.resolve_organism(genome_db.accession_value)
+            if organism_info is not None:
+                genome_db.organism, genome_db.taxon_id, genome_db.strain = organism_info
         organism = genome_db.organism
         tax_id = genome_db.taxon_id
 
