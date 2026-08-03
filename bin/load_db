@@ -28,6 +28,7 @@ from cobradb.rhea import load_rhea
 from cobradb.curated_metabolites import load_bigg_ids
 from cobradb.model_loading import load_model, load_model_assemblies
 from cobradb.version_loading import load_version_date
+from cobradb.summary_loading import load_summary_counts
 from cobradb.taxonomy import load_taxonomy
 
 import argparse
@@ -85,6 +86,11 @@ parser.add_argument(
 parser.add_argument("--skip-taxonomy", help="Skip taxonomy tree", action="store_true")
 parser.add_argument(
     "--skip-collections", help="Skip model collections loading", action="store_true"
+)
+parser.add_argument(
+    "--skip-summary-counts",
+    help="Skip computing database summary counts for the front page",
+    action="store_true",
 )
 args = parser.parse_args()
 
@@ -174,7 +180,7 @@ def main():
         with engine.begin() as conn:
             conn.execute(
                 text(
-                    "DROP TABLE IF EXISTS model, model_collection, model_reaction, model_compartmentalized_component, model_gene, memote_result, model_count, publication_model CASCADE;"
+                    "DROP TABLE IF EXISTS model, model_collection, model_reaction, model_compartmentalized_component, model_gene, memote_result, model_count, publication_model, database_summary_count CASCADE;"
                 )
             )
             conn.execute(text("DELETE FROM component WHERE collection_id IS NOT NULL;"))
@@ -347,6 +353,15 @@ def main():
                 ],
             )
         timings["load_models"] = time.time() - f_start_time
+
+    if not args.skip_summary_counts:
+        f_start_time = time.time()
+        logging.info("Loading database summary counts")
+        # NOTE: engine.dispose() may have run above for the multiprocessing
+        # pool, so use a fresh session rather than the one from the top of main.
+        with Session() as summary_session:
+            load_summary_counts(summary_session)
+        timings["summary_counts"] = time.time() - f_start_time
 
     timings["total"] = time.time() - start_time
     logging.debug(str(timings))

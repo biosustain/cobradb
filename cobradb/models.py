@@ -156,6 +156,26 @@ class DatabaseVersion(Base):
         self.date_time = date_time
 
 
+class DatabaseSummaryCount(Base):
+    """
+    Precomputed whole-database entity counts, refreshed at the end of every ETL run.
+    """
+
+    __tablename__ = "database_summary_count"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    entity_type: Mapped[str] = mapped_column(String(64))
+    count: Mapped[int]
+    date_time: Mapped[datetime.datetime] = mapped_column(DateTime)
+
+    __table_args__ = (UniqueConstraint("entity_type"),)
+
+    def __repr__(self):
+        return "<cobradb DatabaseSummaryCount({self.entity_type}={self.count})>".format(
+            self=self
+        )
+
+
 class InChI(Base):
     __tablename__ = "inchi"
 
@@ -1763,7 +1783,7 @@ class MemoteRun(Base):
     skipped_tests: Mapped[Optional[str]]
 
     __table_args__ = (UniqueConstraint("model_id"),)
-
+x
 
 class EscherModule(Base, BiGGBase):
     __tablename__ = "escher_module"
