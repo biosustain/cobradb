@@ -180,7 +180,9 @@ def main():
         with engine.begin() as conn:
             conn.execute(
                 text(
-                    "DROP TABLE IF EXISTS model, model_collection, model_reaction, model_compartmentalized_component, model_gene, memote_result, model_count, publication_model, database_summary_count CASCADE;"
+                    # database_summary_count is deliberately not dropped here:
+                    # it holds the growth history, which cannot be rebuilt.
+                    "DROP TABLE IF EXISTS model, model_collection, model_reaction, model_compartmentalized_component, model_gene, memote_result, model_count, publication_model CASCADE;"
                 )
             )
             conn.execute(text("DELETE FROM component WHERE collection_id IS NOT NULL;"))

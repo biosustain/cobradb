@@ -57,9 +57,13 @@ def _count_statements():
 
 
 def load_summary_counts(session):
-    """Recompute every database summary count and upsert it.
+    """Count every summarized entity and append the counts as a new snapshot.
 
-    Idempotent: running this twice leaves exactly one row per entity type.
+    Each run adds one row per entity type rather than replacing the previous
+    ones, so the table accumulates the history the statistics page plots. All
+    rows of a run share a single date_time, which is what groups them into one
+    point on the chart.
+
     Safe to run on a partially loaded database; entity types whose count query
     fails (e.g. a table that was dropped) are logged and skipped rather than
     aborting the whole step.
@@ -80,20 +84,11 @@ def load_summary_counts(session):
         if count is None:
             count = 0
 
-        row = (
-            session.query(DatabaseSummaryCount)
-            .filter(DatabaseSummaryCount.entity_type == entity_type)
-            .first()
-        )
-        if row is None:
-            row = DatabaseSummaryCount(
+        session.add(
+            DatabaseSummaryCount(
                 entity_type=entity_type, count=count, date_time=now
             )
-            session.add(row)
-        else:
-            row.count = count
-            row.date_time = now
-
+        )
         results[entity_type] = count
 
     session.commit()

@@ -158,7 +158,11 @@ class DatabaseVersion(Base):
 
 class DatabaseSummaryCount(Base):
     """
-    Precomputed whole-database entity counts, refreshed at the end of every ETL run.
+    Whole-database entity counts, appended at the end of every ETL run.
+
+    Each run adds one row per entity type, so the table doubles as the history
+    of how the database has grown. The front page reads the newest snapshot;
+    the statistics page plots the series over time.
     """
 
     __tablename__ = "database_summary_count"
@@ -168,7 +172,7 @@ class DatabaseSummaryCount(Base):
     count: Mapped[int]
     date_time: Mapped[datetime.datetime] = mapped_column(DateTime)
 
-    __table_args__ = (UniqueConstraint("entity_type"),)
+    __table_args__ = (UniqueConstraint("entity_type", "date_time"),)
 
     def __repr__(self):
         return "<cobradb DatabaseSummaryCount({self.entity_type}={self.count})>".format(
