@@ -50,10 +50,10 @@ taxonomy_names = /datafiles/names.dmp
 
 rhea = /datafiles/rhea.ttl
 
-curated_metabolites = /datafiles/bigg_id_data.json
+curated_metabolites = /app/biggr_models_data/bigg_id_data.json
 
-curated_reactions = /datafiles/reaction_data.json
+curated_reactions = /app/biggr_models_data/reaction_data.json
 
-default_chebis = /datafiles/chebi_pH7_3_mapping.tsv
+default_chebis = /app/biggr_models_data/chebi_pH7_3_mapping.tsv
 
 chebi_cache_dir = /chebi/
