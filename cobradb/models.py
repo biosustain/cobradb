@@ -364,7 +364,10 @@ class Chromosome(Base):
         back_populates="chromosome"
     )
 
-    __table_args__ = (UniqueConstraint("ncbi_accession", "genome_id"),)
+    __table_args__ = (
+        UniqueConstraint("ncbi_accession", "genome_id"),
+        Index("idx_chromosome_genome_id", "genome_id"),
+    )
 
     def __repr__(self):
         return "<cobradb Chromosome(id={self.id}, ncbi_accession={self.ncbi_accession}, genome_id={self.genome_id})>".format(
@@ -392,6 +395,7 @@ class GenomeRegion(Base, BiGGBase):
     __table_args__ = (
         UniqueConstraint("bigg_id", "chromosome_id"),
         Index("idx_genome_region_bigg_id_chrom", "bigg_id", "chromosome_id"),
+        Index("idx_genome_region_chromosome_id", "chromosome_id"),
     )
 
     __mapper_args__ = {"polymorphic_identity": "genome_region", "polymorphic_on": type}
@@ -790,7 +794,10 @@ class Synonym(Base):
     data_source_id: Mapped[int] = mapped_column(ForeignKey("data_source.id"))
     data_source: Mapped[DataSource] = relationship(back_populates="synonyms")
 
-    __table_args__ = (UniqueConstraint("ome_id", "synonym", "type", "data_source_id"),)
+    __table_args__ = (
+        UniqueConstraint("ome_id", "synonym", "type", "data_source_id"),
+        Index("idx_synonym_data_source_id", "data_source_id"),
+    )
 
     def __repr__(self):
         return (
@@ -968,7 +975,10 @@ class ModelGene(Base):
         back_populates="model_gene"
     )
 
-    __table_args__ = (UniqueConstraint("model_id", "gene_id"),)
+    __table_args__ = (
+        UniqueConstraint("model_id", "gene_id"),
+        Index("idx_model_gene_gene_id", "gene_id"),
+    )
 
 
 class ModelReaction(Base, BiGGBase):
