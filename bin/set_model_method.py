@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""One-off: add the model.method column and set it to "CarveMe" for the models
+"""One-off: add the model.method column and set it to "CarveMe 1.6.4" for the models
 in the iPKB_Clostridiaceae collection.
 
 These models are already in the database, so this bypasses the ETL entirely.
@@ -20,7 +20,7 @@ from cobradb.models import Model, ModelCollection, Session
 logging.basicConfig(level=logging.INFO)
 
 COLLECTION = "iPKB_Clostridiaceae"
-METHOD = "CarveMe"
+METHOD = "CarveMe 1.6.4"
 
 with Session() as session:
     session.execute(text("ALTER TABLE model ADD COLUMN IF NOT EXISTS method varchar"))
