@@ -14,6 +14,7 @@ from cobradb.models import (
     ComponentReferenceMapping,
     ModelCollection,
     Reaction,
+    ReactionIDMapping,
     ReactionMatrix,
     ReferenceCompound,
     ReferenceReaction,
@@ -816,3 +817,22 @@ def add_reaction_annotations(
             )
             annotation_db.links.append(link)
     session.add(annotation_db)
+
+
+def create_reaction_id_mapping(
+    session: Session, old_bigg_id: str, universal_reaction_db: UniversalReaction
+) -> Optional[ReactionIDMapping]:
+    """Record old_bigg_id as a superseded identifier of universal_reaction_db."""
+    if old_bigg_id == universal_reaction_db.bigg_id:
+        return None
+    if session.get(ReactionIDMapping, old_bigg_id) is not None:
+        return None
+    # Check that we're not making an entry inaccessible.
+    if utils.get_object_by_bigg_id(session, old_bigg_id, UniversalReaction) is not None:
+        return None
+    id_mapping_db = ReactionIDMapping(
+        old_bigg_id=old_bigg_id,
+        new_universal_reaction=universal_reaction_db,
+    )
+    session.add(id_mapping_db)
+    return id_mapping_db

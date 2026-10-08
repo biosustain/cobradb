@@ -1468,6 +1468,10 @@ class UniversalReaction(Base, BiGGBase):
         back_populates="universal_reaction"
     )
 
+    old_bigg_ids: Mapped[List["ReactionIDMapping"]] = relationship(
+        back_populates="new_universal_reaction"
+    )
+
     __table_args__ = (UniqueConstraint("bigg_id"),)
     # __mapper_args__ = {"polymorphic_identity": "reaction", "polymorphic_on": type}
 
@@ -1705,6 +1709,16 @@ class ComponentIDMapping(Base):
     old_bigg_id: Mapped[str] = mapped_column(primary_key=True)
     new_id: Mapped[int] = mapped_column(ForeignKey(UniversalComponent.id))
     new_universal_component: Mapped[UniversalComponent] = relationship(
+        back_populates="old_bigg_ids"
+    )
+
+
+class ReactionIDMapping(Base):
+    __tablename__ = "reaction_id_mapping"
+
+    old_bigg_id: Mapped[str] = mapped_column(primary_key=True)
+    new_id: Mapped[int] = mapped_column(ForeignKey(UniversalReaction.id))
+    new_universal_reaction: Mapped[UniversalReaction] = relationship(
         back_populates="old_bigg_ids"
     )
 
