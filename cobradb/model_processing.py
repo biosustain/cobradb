@@ -164,7 +164,9 @@ def process_metabolites(session, model, model_db_id):
         metabolite.formula = metabolite_db.formula
         metabolite.compartment = comp_component_db.compartment.bigg_id
 
-        metabolite.annotation["biggr"] = comp_component_db.bigg_id
+        metabolite.annotation["bigg.metabolite"] = [
+            metabolite_db.universal_component.bigg_id
+        ]
         metabolite.annotation["sbo"] = "SBO:0000247"
 
         comp_ref_map = session.scalars(
@@ -174,13 +176,20 @@ def process_metabolites(session, model, model_db_id):
         ).all()
         if comp_ref_map:
             chebis = []
+            inchikeys = []
             for crm in comp_ref_map:
                 if crm.reference_compound.bigg_id.startswith("CHEBI:"):
                     chebis.append(crm.reference_compound.bigg_id)
+                if (inchi := crm.reference_compound.inchi) is not None:
+                    inchikeys.append(
+                        f"{inchi.key_major}-{inchi.key_minor}-{inchi.key_proton}"
+                    )
                 metabolite.annotation["sbo"] = crm.reference_compound.get_sbo()
 
             if chebis:
                 metabolite.annotation["chebi"] = chebis
+            if inchikeys:
+                metabolite.annotation["inchikey"] = sorted(set(inchikeys))
 
 
 @timing
@@ -222,7 +231,9 @@ def process_reactions(
         # TODO: Handle flipping reactions
 
         reaction.annotation.clear()
-        reaction.annotation["biggr"] = model_reaction_db.reaction.bigg_id
+        reaction.annotation["bigg.reaction"] = [
+            model_reaction_db.reaction.universal_reaction.bigg_id
+        ]
 
         reaction.annotation["sbo"] = "SBO:0000176"
 
