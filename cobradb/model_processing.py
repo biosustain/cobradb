@@ -52,6 +52,15 @@ def create_model_base_filename(session: Session, bigg_id: str) -> str:
     raise Exception("Should not occur.")
 
 
+def get_model_taxon_id(model_db: Model):
+    """NCBI taxonomy ID of the model, falling back to that of its genome."""
+    if model_db.taxon_id is not None:
+        return model_db.taxon_id
+    if model_db.genome is not None:
+        return model_db.genome.taxon_id
+    return None
+
+
 @timing
 def process_model(session: Session, model_data, model_filepath: Union[str, PathLike]):
     # apply id normalization
@@ -94,11 +103,17 @@ def process_model(session: Session, model_data, model_filepath: Union[str, PathL
         model_db_id,
     )
 
+    taxon_id = get_model_taxon_id(model_db)
+
     base_filename = create_model_base_filename(session, model_db.bigg_id)
     model_output_path = Path("/models/models/") / base_filename
     model_output_path.parent.mkdir(parents=True, exist_ok=True)
     logging.warning(f"Writing corrected model to: {model_output_path}")
+    if taxon_id is not None:
+        model.annotation["taxonomy"] = [("hasTaxon", str(taxon_id))]
     write_sbml_model(model, model_output_path.with_suffix(".biggr.sbml"))
+    if taxon_id is not None:
+        model.annotation["taxonomy"] = [str(taxon_id)]
     save_json_model(model, model_output_path.with_suffix(".biggr.json"))
     save_yaml_model(model, str(model_output_path.with_suffix(".biggr.yaml")))
     for ext in [".biggr.sbml", ".biggr.json", ".biggr.yaml"]:
