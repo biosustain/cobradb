@@ -15,19 +15,20 @@ services:
       LIBCHEBIPY_DOWNLOAD_DIR: "/chebi" 
     volumes:
       - /data/biggr-assemblies:/assemblies
-      - /data/biggr-bigg-models-new:/models
+      - /data/biggr-bigg-models-new:/models # an empty folder for storing models to be generated
       - /data/biggr-input-models:/input_models
       - /data/biggr-chebi-cache:/chebi
       - /data/biggr-datafiles:/datafiles
     stdin_open: true
     tty: true
+  
   cobradb-postgres:
     container_name: cobradb-postgres
     image: postgres:17.6
     command: -c config_file=/etc/postgresql.conf
     restart: always
     volumes:
-      - /data/biggr-postgres-new:/var/lib/postgresql/data
+      - /data/biggr-postgres-new:/var/lib/postgresql/data # an empty folder for storing postgresql db-related files to be generated
       - ./postgresql.conf:/etc/postgresql.conf
     ports:
       - "5433:5432"
