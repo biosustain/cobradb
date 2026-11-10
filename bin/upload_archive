@@ -10,10 +10,8 @@ DEST="https://biggr.blob.core.windows.net/backups/${STAMP}"
 for src in \
         /data/biggr-input-models \
         /data/biggr-assemblies \
-        /data/biggr-postgres \
         /data/biggr-bigg-models \
         /data/biggr-datafiles \
-        /data/biggr-metanetx \
         /data/biggr-chebi-cache; do
     azcopy copy --recursive --overwrite=false --follow-symlinks \
         "$src" \
@@ -22,3 +20,12 @@ done
 
 # upload JSON file for this run
 azcopy copy --overwrite=false "$USED_JSON_FILE" "${DEST}/?${SAS}"
+
+# upload postgres dump for this run
+docker exec biggr-postgres pg_dump -U biggr -d biggr -Fc > "/data/biggr_${STAMP}.dump" # can take ~30 mins
+docker exec biggr-postgres pg_dumpall -U biggr --globals-only > "/data/biggr_globals_${STAMP}.sql"
+
+azcopy copy --overwrite=false "/data/biggr_${STAMP}.dump" "${DEST}/?${SAS}"
+azcopy copy --overwrite=false "/data/biggr_globals_${STAMP}.sql" "${DEST}/?${SAS}"
+
+rm "/data/biggr_${STAMP}.dump" "/data/biggr_globals_${STAMP}.sql"
