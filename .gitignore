@@ -31,6 +31,7 @@ lib64
 pip-log.txt
 *.ini
 .DS_STORE
+!settings.ini
 
 # Unit test / coverage reports
 .coverage
@@ -57,3 +58,4 @@ ome_data
 TAGS
 .cache/
 .mypy_cache/
+!settings.ini

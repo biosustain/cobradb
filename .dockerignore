@@ -1,0 +1,2 @@
+# secrets: the pipeline gets DB credentials from env vars in docker-compose
+.env

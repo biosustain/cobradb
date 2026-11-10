@@ -15,9 +15,13 @@ jobs:
           persist-credentials: false
       - name: Build documentation
         id: build
+        env:
+          COBRADB_POSTGRES_USER: docs
+          COBRADB_POSTGRES_PASSWORD: not-used
+          COBRADB_POSTGRES_DATABASE: docs
         run: |
           cd documentation
-          cp ../settings.ini.docker ./settings.ini
+          cp ../settings.ini ./settings.ini
           sudo apt install -y pandoc
           pip install -r requirements.txt
           make html
