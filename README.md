@@ -98,16 +98,42 @@ docker compose --profile prod down
 docker compose --profile prod up -d
 ```
 
+### 4. Archive the run to Azure Blob Storage
+
 It is good practice to ensure reproducibility and upload all ETL related input,
 output, tools, config files to a backup storage every time you do a full update.
-Archived runs are stored at
-[biggr storage account](https://portal.azure.com/#@dtudk.onmicrosoft.com/resource/subscriptions/aee8556f-d2fd-4efd-a6bd-f341a90fa76e/resourceGroups/rg-recon/providers/Microsoft.Storage/storageAccounts/biggr/overview)
-You can update the SAS token and the model list json file in the .env file. Then
-run the upload script with
+Archived runs are stored in the `backups` container of the
+[biggr storage account](https://portal.azure.com/#@dtudk.onmicrosoft.com/resource/subscriptions/aee8556f-d2fd-4efd-a6bd-f341a90fa76e/resourceGroups/rg-recon/providers/Microsoft.Storage/storageAccounts/biggr/overview),
+one folder per run (`backups/<YYYYMMDD>/`).
+
+This archive is the data-level backup. For the VM-level backup (disk
+snapshots), see the "Backup and restore" section in the
+[biggr_models README](https://github.com/biosustain/bigg_models).
+
+`bin/upload_archive` uploads:
+
+| What | How | Source |
+|---|---|---|
+| Raw input models | `azcopy`, copied as-is | `/data/biggr-input-models` |
+| Standardized models | `azcopy`, copied as-is | `/data/biggr-bigg-models` |
+| Genome assemblies, data files, ChEBI cache | `azcopy`, copied as-is | `/data/biggr-assemblies`, `/data/biggr-datafiles`, `/data/biggr-chebi-cache` |
+| Model list used for the run | `azcopy` | `$USED_JSON_FILE` |
+| PostgreSQL database | `pg_dump -Fc` → `biggr_<YYYYMMDD>.dump` | `biggr` database in the `biggr-postgres` container |
+| PostgreSQL roles | `pg_dumpall --globals-only` → `biggr_globals_<YYYYMMDD>.sql` | same |
+
+
+To run it, update `SAS` (a SAS token for the `backups` container) and
+`USED_JSON_FILE` in `.env`, then run the script from the `cobradb/` directory:
 
 ```bash
 cd ../cobradb && bin/upload_archive
 ```
+
+A full run takes a while (about 30 min for the database dump, plus about 70 GB
+of uploads), so run it outside peak hours. `azcopy` and `pg_dump` run at the
+lowest CPU/IO priority and uploads are capped at 400 Mbps, so that the website
+stays responsive. The globals file contains password hashes, so keep access to
+the `backups` container restricted.
 
 If you don't have the azcopy installed already, you can install the non-snap
 version with the following command
@@ -120,6 +146,21 @@ sudo mv /tmp/azcopy_linux_amd64_*/azcopy /usr/local/bin/azcopy
 
 This standalone binary can run unsandboxed and read any path the calling user
 has access to.
+
+### Restoring the database from an archive
+
+Download `biggr_<YYYYMMDD>.dump` and `biggr_globals_<YYYYMMDD>.sql` from the
+archive folder, then on an empty PostgreSQL instance restore the roles first
+and the data second:
+
+```bash
+psql -f biggr_globals_<YYYYMMDD>.sql              # roles
+createdb biggr                                     # skip if it already exists
+pg_restore -d biggr -j 4 biggr_<YYYYMMDD>.dump     # data, 4 parallel jobs
+```
+
+Run them against the PostgreSQL instance that will serve the website, e.g. the
+`biggr-db` container started on an empty data directory.
 
 ## model-genome-set.json reference
 
