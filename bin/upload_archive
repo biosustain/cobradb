@@ -6,6 +6,11 @@ source .env
 STAMP=$(date +%Y%m%d)
 DEST="https://biggr.blob.core.windows.net/backups/${STAMP}"
 
+# run at lowest CPU/IO priority and cap upload speed (~50 MB/s),
+# so the website and database keep enough disk bandwidth
+LOWPRIO="ionice -c3 nice -n19"
+CAP_MBPS=400
+
 # upload each /data source dir as a subfolder under STAMP/
 for src in \
         /data/biggr-input-models \
@@ -13,19 +18,20 @@ for src in \
         /data/biggr-bigg-models \
         /data/biggr-datafiles \
         /data/biggr-chebi-cache; do
-    azcopy copy --recursive --overwrite=false --follow-symlinks \
+    $LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --recursive --overwrite=false --follow-symlinks \
         "$src" \
         "${DEST}/?${SAS}"
 done
 
 # upload JSON file for this run
-azcopy copy --overwrite=false "$USED_JSON_FILE" "${DEST}/?${SAS}"
+$LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "$USED_JSON_FILE" "${DEST}/?${SAS}"
 
 # upload postgres dump for this run
-docker exec biggr-postgres pg_dump -U biggr -d biggr -Fc > "/data/biggr_${STAMP}.dump" # can take ~30 mins
+# ionice/nice must run inside the container: they don't carry over through `docker exec`
+docker exec biggr-postgres $LOWPRIO pg_dump -U biggr -d biggr -Fc > "/data/biggr_${STAMP}.dump" # can take ~30 mins
 docker exec biggr-postgres pg_dumpall -U biggr --globals-only > "/data/biggr_globals_${STAMP}.sql"
 
-azcopy copy --overwrite=false "/data/biggr_${STAMP}.dump" "${DEST}/?${SAS}"
-azcopy copy --overwrite=false "/data/biggr_globals_${STAMP}.sql" "${DEST}/?${SAS}"
+$LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "/data/biggr_${STAMP}.dump" "${DEST}/?${SAS}"
+$LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "/data/biggr_globals_${STAMP}.sql" "${DEST}/?${SAS}"
 
 rm "/data/biggr_${STAMP}.dump" "/data/biggr_globals_${STAMP}.sql"
