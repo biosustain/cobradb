@@ -119,7 +119,7 @@ snapshots), see the "Backup and restore" section in the
 | Genome assemblies, data files, ChEBI cache | `azcopy`, copied as-is | `/data/biggr-assemblies`, `/data/biggr-datafiles`, `/data/biggr-chebi-cache` |
 | Model list used for the run | `azcopy` | `$USED_JSON_FILE` |
 | PostgreSQL database | `pg_dump -Fc` → `biggr_<YYYYMMDD>.dump` | `biggr` database in the `biggr-postgres` container |
-| PostgreSQL roles | `pg_dumpall --globals-only` → `biggr_globals_<YYYYMMDD>.sql` | same |
+| PostgreSQL roles (without passwords) | `pg_dumpall --globals-only --no-role-passwords` → `biggr_globals_<YYYYMMDD>.sql` | same |
 
 
 To run it, update `SAS` (a SAS token for the `backups` container) and
@@ -132,8 +132,11 @@ cd ../cobradb && bin/upload_archive
 A full run takes a while (about 30 min for the database dump, plus about 70 GB
 of uploads), so run it outside peak hours. `azcopy` and `pg_dump` run at the
 lowest CPU/IO priority and uploads are capped at 400 Mbps, so that the website
-stays responsive. The globals file contains password hashes, so keep access to
-the `backups` container restricted.
+stays responsive.
+
+The archive contains no passwords: the roles file is dumped with
+`--no-role-passwords`. The `biggr` storage account does not allow public
+access, so the archive can only be read with a SAS token or Azure login. 
 
 If you don't have the azcopy installed already, you can install the non-snap
 version with the following command
@@ -158,6 +161,9 @@ psql -f biggr_globals_<YYYYMMDD>.sql              # roles
 createdb biggr                                     # skip if it already exists
 pg_restore -d biggr -j 4 biggr_<YYYYMMDD>.dump     # data, 4 parallel jobs
 ```
+
+The roles file has no passwords. With the Docker setup, the `biggr-postgres`
+container sets the password from `POSTGRES_PASSWORD` in `.env` on first start.
 
 Run them against the PostgreSQL instance that will serve the website, e.g. the
 `biggr-db` container started on an empty data directory.

@@ -29,7 +29,7 @@ $LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "$USED_JSON_FILE" "$
 # upload postgres dump for this run
 # ionice/nice must run inside the container: they don't carry over through `docker exec`
 docker exec biggr-postgres $LOWPRIO pg_dump -U biggr -d biggr -Fc > "/data/biggr_${STAMP}.dump" # can take ~30 mins
-docker exec biggr-postgres pg_dumpall -U biggr --globals-only > "/data/biggr_globals_${STAMP}.sql"
+docker exec biggr-postgres pg_dumpall -U biggr --globals-only --no-role-passwords >"/data/biggr_globals_${STAMP}.sql"
 
 $LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "/data/biggr_${STAMP}.dump" "${DEST}/?${SAS}"
 $LOWPRIO azcopy copy --cap-mbps $CAP_MBPS --overwrite=false "/data/biggr_globals_${STAMP}.sql" "${DEST}/?${SAS}"
